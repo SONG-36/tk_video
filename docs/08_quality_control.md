@@ -33,3 +33,11 @@
 每条视频必须包含：视频编号、视频分型、创意风格、视频目标、开头钩子、Creative Board、Storyboard、镜头卡、镜头级 Seedance Prompt、图片输入计划、剪辑合成计划、缺失素材、风险提醒和可替换变量。
 
 每个镜头必须包含：`shot_id`、`duration`、`input_images`、`reference_videos`、`main_subject`、`scene`、`action`、`camera_movement`、`lighting`、`style`、`composition`、`product_constraints`、`subtitle_text`、`negative_prompt`、`output_goal`。
+
+## 读取验收与前端展示
+
+- 前端必须如实展示既有质量字段、缺失项和风险项，不得隐藏或改写。
+- 未规划视频不得作为有效视频展示；目录或文件存在不能替代已确认批次计划。
+- 缺失文件不得显示为正常，也不得由读取器自动生成、修复、重命名或复制。
+- 读取器只传递既有质量结论，不修改结论、不新增评分或通过标准。
+- 第 15、16 章 B/C 级与第 19 章完整资产要求的关系保持未裁决，读取器和前端不得隐藏或自行裁决。
