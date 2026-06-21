@@ -45,6 +45,7 @@
 6. 第 9 章称“材料检查未通过不能进入图片检查”，第 12 章允许建议材料缺失经确认、风险材料缺失写入禁止编造后通过；实现需把“通过”解释为该分级规则的结果，而非材料全部齐全。
 7. 第 7 章将真人出镜需求、大场景需求和功能明确程度设计为三档选项，但第 18 章 `product_profile` 示例将 `requires_model`、`requires_large_scene`、`has_clear_function` 定义为布尔值；页面信息如何无损映射到数据对象尚未说明。
 8. 第 18 章定义了 `category_detection` 数据结构，但当前任务 03 的 Schema 清单没有独立类目确认 Schema；`category_detector` 的候选输出与人工确认结果缺少专用数据契约。
+9. 第 18 章定义了 `basic_info`，但当前 Schema 清单没有独立商品基础信息 Schema；现有 `product_series.schema.json` 同时要求后续型号、差异检查和目标型号字段，因此新建商品页在 `draft` / `basic_info_completed` 阶段的输出缺少与其生命周期匹配的独立数据契约。
 
 ## 任务执行阻断记录
 
