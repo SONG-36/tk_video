@@ -2,18 +2,60 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "judgement_report.schema.json",
   "title": "Variant Judgement Report",
-  "description": "型号级判断报告；variant_id 必须等于系列 selected_variant_id。",
+  "description": "来源：00_design.md 第 7、10、11 章及第 18 章历史兼容结构。型号级判断报告。product_series_id 与 variant_id 必须指向当前系列和 selected_variant_id，由后续 validators 校验。第 18 章没有独立完整 judgement_report 对象，本 Schema 只投影页面报告结构和历史字段。",
   "type": "object",
-  "required": ["product_series_id", "variant_id", "classification_report", "video_fit_report", "category_playbook", "risks", "missing_information", "confirmed_by_user"],
+  "required": [
+    "product_series_id",
+    "variant_id",
+    "classification_report",
+    "video_fit_report",
+    "category_playbook",
+    "risks",
+    "missing_information",
+    "confirmed_by_user"
+  ],
   "properties": {
     "product_series_id": {"type": "string", "minLength": 1},
     "variant_id": {"type": "string", "minLength": 1},
-    "classification_report": {"type": "object"},
-    "video_fit_report": {"type": "object"},
-    "category_playbook": {"type": "object"},
+    "classification_report": {
+      "type": "object",
+      "required": ["content_category", "shooting_ease", "seeding_ease", "purchase_decision_ease", "self_made_video_recommendation"],
+      "properties": {
+        "content_category": {"enum": ["小件标品", "非标品", "大件标品"]},
+        "shooting_ease": {"type": "integer", "minimum": 1, "maximum": 5},
+        "seeding_ease": {"type": "integer", "minimum": 1, "maximum": 5},
+        "purchase_decision_ease": {"type": "integer", "minimum": 1, "maximum": 5},
+        "self_made_video_recommendation": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "video_fit_report": {
+      "type": "object",
+      "required": ["recommended_video_types", "not_recommended_video_types"],
+      "properties": {
+        "recommended_video_types": {"type": "array", "items": {"$ref": "#/$defs/videoTypeResult"}},
+        "not_recommended_video_types": {"type": "array", "items": {"$ref": "#/$defs/videoTypeResult"}}
+      },
+      "additionalProperties": false
+    },
+    "category_playbook": {"type": "object", "additionalProperties": true},
     "risks": {"type": "array", "items": {"type": "string"}},
     "missing_information": {"type": "array", "items": {"type": "string"}},
     "confirmed_by_user": {"type": "boolean"}
   },
-  "additionalProperties": true
+  "$defs": {
+    "videoTypeResult": {
+      "type": "object",
+      "required": ["type", "name", "reason"],
+      "properties": {
+        "type": {"enum": ["life_scenario", "selling_point", "unboxing", "buyer_seller_show", "evaluation_comparison"]},
+        "name": {"enum": ["生活场景型", "卖点讲解型", "开箱直拍型", "买家卖家秀型", "测评对比型"]},
+        "score": {"type": "number"},
+        "is_main_video_type": {"type": "boolean"},
+        "reason": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
 }

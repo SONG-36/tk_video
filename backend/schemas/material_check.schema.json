@@ -1,19 +1,28 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "material_check.schema.json",
-  "title": "Material Check",
-  "description": "当前目标型号的材料检查结果。风险缺失必须进入 do_not_invent。",
+  "title": "Variant Material Check",
+  "description": "来源：00_design.md 第 7、12 章及第 18 章历史兼容结构。当前目标型号的材料检查结果。product_series_id 与 variant_id 必须对应当前 selected_variant_id，由后续 validators 校验。风险材料缺失时必须进入 do_not_invent。",
   "type": "object",
-  "required": ["product_series_id", "variant_id", "required_materials", "recommended_materials", "risk_materials", "missing_materials", "do_not_invent", "can_continue"],
+  "required": [
+    "product_series_id",
+    "variant_id",
+    "required_materials",
+    "recommended_materials",
+    "risk_materials",
+    "missing_materials",
+    "do_not_invent",
+    "can_continue"
+  ],
   "properties": {
     "product_series_id": {"type": "string", "minLength": 1},
     "variant_id": {"type": "string", "minLength": 1},
-    "required_materials": {"type": "array", "items": {"type": "object"}},
-    "recommended_materials": {"type": "array", "items": {"type": "object"}},
-    "risk_materials": {"type": "array", "items": {"type": "object"}},
-    "missing_materials": {"type": "array", "items": {"type": "string"}},
-    "do_not_invent": {"type": "array", "items": {"type": "string"}},
+    "required_materials": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "recommended_materials": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "risk_materials": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "missing_materials": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "do_not_invent": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
     "can_continue": {"type": "boolean"}
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

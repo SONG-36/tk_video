@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "creative_direction.schema.json",
-  "title": "Creative Direction",
-  "description": "目标型号的用户创意选择及系统专业翻译。",
+  "title": "Variant Creative Direction",
+  "description": "来源：00_design.md 第 7、14、18 章。目标型号的用户创意选择及系统专业翻译。product_series_id 与 variant_id 必须对应当前 selected_variant_id，由后续 validators 校验。用户自由想法是可选输入，不作为通过条件。",
   "type": "object",
   "required": ["product_series_id", "variant_id", "creative_direction", "confirmed_by_user"],
   "properties": {
@@ -12,15 +12,36 @@
       "type": "object",
       "required": ["selected_styles", "story_structures", "expression_level", "human_policy", "system_translation"],
       "properties": {
-        "selected_styles": {"type": "array", "minItems": 1, "items": {"type": "string"}},
-        "story_structures": {"type": "array", "minItems": 1, "items": {"type": "string"}},
-        "expression_level": {"type": "string"},
-        "human_policy": {"type": "string"},
-        "system_translation": {"type": "object"}
+        "selected_styles": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"enum": ["搞笑反转", "夸张戏剧化", "好莱坞电影感", "真实生活记录感", "测评实验感", "解压爽感", "高级质感广告", "原生 TikTok 口播", "无厘头短剧", "前后对比冲击"]},
+          "uniqueItems": true
+        },
+        "story_structures": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"enum": ["痛点夸张化", "误会反转", "前后对比", "小剧场冲突", "产品英雄登场", "用户被惊艳", "失败方法 vs 正确方法", "普通工具 vs 本产品"]},
+          "uniqueItems": true
+        },
+        "expression_level": {"enum": ["保守真实", "中等夸张", "强戏剧化"]},
+        "human_policy": {"enum": ["不允许真人", "只允许手部", "允许真人但不露脸", "允许真人露脸"]},
+        "user_free_idea": {"type": "string"},
+        "system_translation": {
+          "type": "object",
+          "required": ["camera_language", "visual_texture", "rhythm", "asset_needs"],
+          "properties": {
+            "camera_language": {"type": "array", "items": {"type": "string"}},
+            "visual_texture": {"type": "array", "items": {"type": "string"}},
+            "rhythm": {"type": "string", "minLength": 1},
+            "asset_needs": {"type": "array", "items": {"type": "string"}}
+          },
+          "additionalProperties": false
+        }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
     "confirmed_by_user": {"type": "boolean"}
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

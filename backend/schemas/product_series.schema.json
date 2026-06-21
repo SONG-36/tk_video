@@ -2,18 +2,48 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "product_series.schema.json",
   "title": "Product Series",
-  "description": "商品系列主对象。selected_variant_id 必须引用 variants 中的 variant_id；该跨数组约束需由 validators 进一步校验。",
+  "description": "来源：00_design.md 第 5、6、18 章。商品系列及其型号主对象。selected_variant_id 必须引用同一对象 variants[].variant_id 中的一个值，且 variant_id 在系列内必须唯一；JSON Schema 无法原生完整表达该跨数组关系，由后续 validators 校验。",
   "type": "object",
-  "required": ["product_series_id", "product_series_name", "platform_category", "target_market", "variants", "selected_variant_id"],
+  "required": [
+    "product_series_id",
+    "product_series_name",
+    "platform_category",
+    "target_market",
+    "variants",
+    "variant_difference_report",
+    "selected_variant_id"
+  ],
   "properties": {
     "product_series_id": {"type": "string", "minLength": 1},
     "product_series_name": {"type": "string", "minLength": 1},
     "platform_category": {"type": "string", "minLength": 1},
     "target_market": {"type": "string", "minLength": 1},
-    "variants": {"type": "array", "minItems": 1, "items": {"$ref": "variant.schema.json"}},
-    "variant_difference_report": {"type": "object"},
+    "variants": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "variant.schema.json"}
+    },
+    "variant_difference_report": {
+      "type": "object",
+      "required": ["checked", "content_must_be_separated", "non_shareable_fields"],
+      "properties": {
+        "checked": {"type": "boolean"},
+        "content_must_be_separated": {"type": "boolean"},
+        "non_shareable_fields": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+      },
+      "additionalProperties": false
+    },
     "selected_variant_id": {"type": "string", "minLength": 1},
-    "video_batch_plan": {"$ref": "video_batch_plan.schema.json"}
+    "video_batch_plan": {
+      "type": "object",
+      "required": ["batch_id", "product_series_id", "variant_id"],
+      "properties": {
+        "batch_id": {"type": "string", "minLength": 1},
+        "product_series_id": {"type": "string", "minLength": 1},
+        "variant_id": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

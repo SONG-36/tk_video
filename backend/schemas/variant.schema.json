@@ -2,17 +2,23 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "variant.schema.json",
   "title": "Variant / SKU",
-  "description": "可独立选择、拍摄和销售的型号。型号专属外观、参数、配件、图片和限制不得提升为系列共享数据。",
+  "description": "来源：00_design.md 第 5—7、18 章。可被单独选择、拍摄和销售的型号。型号专属外观、参数、配件、图片、卖点和限制不得提升为系列共享数据。optional_revision 不是必填字段；存在时可为对象或 null，不代表强制启用 Revision。",
   "type": "object",
-  "required": ["variant_id", "variant_name", "attributes", "image_asset_ids", "optional_revision"],
+  "required": [
+    "variant_id",
+    "seller_sku",
+    "variant_name",
+    "attributes",
+    "image_asset_ids"
+  ],
   "properties": {
     "variant_id": {"type": "string", "minLength": 1},
-    "seller_sku": {"type": "string"},
+    "seller_sku": {"type": "string", "minLength": 1},
     "platform_sku": {"type": "string"},
     "variant_name": {"type": "string", "minLength": 1},
-    "attributes": {"type": "object"},
-    "image_asset_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-    "optional_revision": {"type": ["object", "null"], "default": null}
+    "attributes": {"type": "object", "additionalProperties": true},
+    "image_asset_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "optional_revision": {"type": ["object", "null"]}
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }
