@@ -1,12 +1,77 @@
 {
+  "rule_file": "variant_rules.json",
   "rule_set": "variant_rules",
   "source_section": "00_design.md 第 5、6、7、18 章",
-  "status": "skeleton",
+  "authority": "00_design.md 是唯一权威源",
+  "version": "0.1.0",
+  "status": "draft",
   "rules": {
-    "minimum_variants": 1,
-    "single_variant_creates_default": true,
-    "fields": ["variant_id", "variant_name", "seller_sku", "platform_sku", "color", "size", "core_parameters", "accessories", "price", "image_asset_ids"],
-    "optional_revision_default": null,
-    "selected_variant_required_before_profile": true
-  }
+    "object_chain": [
+      "product_series",
+      "variant_or_sku",
+      "video_batch",
+      "shot_plan"
+    ],
+    "variant_input_fields": [
+      "variant_name",
+      "seller_sku",
+      "platform_sku",
+      "color",
+      "size",
+      "core_parameters",
+      "accessories",
+      "price",
+      "variant_images"
+    ],
+    "minimum_variant_count": 1,
+    "single_variant_policy": {
+      "create_default_variant": true,
+      "auto_select_default_variant": true,
+      "separate_single_product_data_model_forbidden": true
+    },
+    "target_variant_policy": {
+      "selected_variant_id_required_before_variant_profile": true,
+      "selected_variant_id_must_reference_series_variant": true,
+      "one_batch_one_variant": true,
+      "downstream_variant_scoped_objects": [
+        "judgement_report",
+        "material_check",
+        "image_assets",
+        "creative_direction",
+        "video_batch_plan",
+        "shot_asset_plan",
+        "codex_task_package"
+      ]
+    },
+    "optional_revision": {
+      "default": null,
+      "part_of_default_flow": false,
+      "creates_default_page_or_state": false,
+      "enable_when": [
+        "old_and_new_structure_differ",
+        "old_and_new_parameters_differ",
+        "old_and_new_images_cannot_be_shared",
+        "new_old_comparison_video_required",
+        "legacy_asset_reuse_must_be_checked"
+      ]
+    },
+    "data_ownership": {
+      "series_level": [
+        "platform_category",
+        "target_market",
+        "truly_shared_information"
+      ],
+      "variant_level": [
+        "appearance",
+        "dimensions",
+        "parameters",
+        "color",
+        "accessories",
+        "images",
+        "selling_points",
+        "restrictions"
+      ]
+    }
+  },
+  "open_issues": []
 }

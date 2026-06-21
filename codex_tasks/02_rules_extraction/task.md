@@ -41,7 +41,34 @@
 
 以下清单同时规定每个文件应该写入什么内容：
 
-所有 JSON 必须语法有效，顶层至少包含 `rule_set`、`source_section`、`status` 和对应规则主体；`source_section` 必须精确到章节或小节。
+`rules/README.md` 必须说明：
+
+- `rules/*.json` 是机器可读投影，不是权威源。
+- `docs/rules/*.md` 是阅读版，不是机器规则。
+- 后续 `backend/` 只能读取 `rules/*.json`，不允许把后端实现反向覆盖规则。
+- 如 `rules/*.json` 与 `00_design.md` 冲突，以 `00_design.md` 为准。
+
+所有 JSON 必须语法有效。每个 `rules/*.json` 顶层必须至少包含：
+
+- `rule_file`
+- `rule_set`
+- `source_section`
+- `authority`
+- `version`
+- `status`
+- `rules`
+- `open_issues`
+
+字段含义：
+
+- `rule_file`：当前规则文件名。
+- `rule_set`：规则集名称。
+- `source_section`：来源章节，必须指向 `00_design.md` 的章节或小节。
+- `authority`：必须写明 `00_design.md` 是唯一权威源。
+- `version`：规则投影版本，初始可为 `0.1.0`。
+- `status`：`draft`、`active`、`deprecated` 中的一种，当前统一为 `draft`。
+- `rules`：机器可读规则主体，不允许只写自然语言大段说明。
+- `open_issues`：记录规则中尚未裁决的问题，例如第 15、16 章与第 19 章的适用关系冲突。
 
 1. `platform_category_rules.json`：第 7、9 章的候选展示字段、人工确认要求和进入闸门；不得发明平台类目树。
 2. `variant_rules.json`：第 5、6、7、18 章的型号字段、至少一个型号、单型号默认对象、目标型号和可选 Revision。

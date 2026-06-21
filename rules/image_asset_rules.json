@@ -1,10 +1,87 @@
 {
+  "rule_file": "image_asset_rules.json",
   "rule_set": "image_asset_rules",
-  "source_section": "00_design.md 第 13 章：产品图片资产规则",
-  "status": "skeleton",
-  "asset_types": ["product_reference", "product_detail", "usage_scene", "before_after", "packaging", "style_reference", "motion_reference"],
-  "minimum_requirements": {"general_product": ["front", "side", "back", "45_degree", "scale_reference", "detail", "accessories", "packaging"], "electrical_extra": ["buttons", "charging_port", "display_or_indicator", "connector_or_plug", "nameplate", "safety_label", "accessory_group"], "effect_product_extra": ["before", "during", "after", "real_scene", "human_hand_or_pet_interaction"]},
-  "completeness_levels": [{"image_count": "0-2", "capability": "禁止生成镜头级提示词"}, {"image_count": "3-5", "capability": "基础提示词，高失真风险"}, {"image_count": "6-8", "capability": "标准提示词，提示缺失角度"}, {"image_count": "8+且覆盖多角度细节场景", "capability": "高质量镜头级提示词"}],
-  "shot_binding_fields": ["input_images", "shape_lock_images", "scene_reference_images", "composition_reference_images", "motion_reference", "distortion_risk"],
-  "pass_conditions": ["上传或明确标记缺失", "完成资产类型和关键用途标记", "生成完整度、缺图和能力限制"]
+  "source_section": "00_design.md 第 13 章‘产品图片资产规则’",
+  "authority": "00_design.md 是唯一权威源",
+  "version": "0.1.0",
+  "status": "draft",
+  "rules": {
+    "scope": "selected_variant_id",
+    "asset_types": {
+      "product_reference": "产品外观锁定图",
+      "product_detail": "产品细节图",
+      "usage_scene": "使用场景图",
+      "before_after": "前后对比图",
+      "packaging": "包装图",
+      "style_reference": "风格参考图",
+      "motion_reference": "运镜或动作参考视频"
+    },
+    "minimum_requirements": {
+      "general_product": [
+        "产品正面图",
+        "产品侧面图",
+        "产品背面图",
+        "产品 45 度角图",
+        "产品尺寸比例参考图",
+        "产品细节图",
+        "配件图",
+        "包装图"
+      ],
+      "electrical_product_extra": [
+        "按钮区域特写",
+        "充电口特写",
+        "显示屏或指示灯特写",
+        "接口或插头特写",
+        "标签铭牌图",
+        "安全标识图",
+        "配件组合图"
+      ],
+      "effect_product_extra": [
+        "使用前图",
+        "使用中图",
+        "使用后图",
+        "真实场景图",
+        "真人手部或宠物互动图"
+      ]
+    },
+    "completeness_levels": [
+      {"minimum_count": 0, "maximum_count": 2, "capability": "script_and_missing_image_list_only", "distortion_risk": "not_applicable"},
+      {"minimum_count": 3, "maximum_count": 5, "capability": "basic_prompt", "distortion_risk": "high"},
+      {"minimum_count": 6, "maximum_count": 8, "capability": "standard_shot_prompt_with_missing_angle_warning", "distortion_risk": "depends_on_coverage"},
+      {"minimum_count": 8, "additional_requirement": "covers_multiple_angles_details_and_scenes", "capability": "high_quality_shot_prompt", "distortion_risk": "depends_on_assets"}
+    ],
+    "image_asset_fields": [
+      "image_id",
+      "file_name",
+      "image_type",
+      "view_angle",
+      "usage",
+      "quality",
+      "required",
+      "notes"
+    ],
+    "shot_binding_requirements": [
+      "images_used",
+      "purpose_of_each_image",
+      "product_shape_lock_images",
+      "scene_reference_images",
+      "composition_reference_images",
+      "action_or_camera_reference",
+      "missing_image_distortion_risk"
+    ],
+    "pass_conditions": {
+      "uploaded_or_explicitly_missing": true,
+      "every_asset_type_labeled": true,
+      "key_asset_usage_labeled": true,
+      "completeness_level_generated": true,
+      "missing_image_list_generated": true,
+      "generation_capability_limited_when_insufficient": true
+    }
+  },
+  "open_issues": [
+    {
+      "issue": "第 18 章图片资产单项示例未显式包含 product_series_id 与 variant_id，但页面和数据归属规则要求型号隔离。",
+      "resolution_status": "unresolved"
+    }
+  ]
 }

@@ -1,10 +1,115 @@
 {
+  "rule_file": "video_batch_rules.json",
   "rule_set": "video_batch_rules",
-  "source_section": "00_design.md 第 15 章：视频批次规划规则",
-  "status": "skeleton",
-  "batch_generation": {"default_count": 3, "maximum_count": 5, "default_policy": "1A_1B_1C", "sufficient_assets_policy": "2A_2B_1C"},
-  "generation_levels": {"A": ["Creative Board", "Script", "Storyboard", "Shot Cards", "Seedance Prompts", "Image Input Plan", "Editing Plan", "QC Checklist"], "B": ["Script", "Storyboard", "主要镜头", "简版 Seedance Prompt", "缺图提醒"], "C": ["视频标题", "开头钩子", "视频结构", "核心卖点", "参考镜头"]},
-  "batch_goals": ["测试不同视频分型", "测试不同开头钩子", "测试不同卖点", "测试不同使用场景", "测试不同创意风格", "测试不同用户痛点"],
-  "video_fields": ["video_id", "video_type", "creative_style", "main_selling_point", "usage_scene", "target_pain_point", "generation_level", "generate_seedance_prompts", "requires_human_assets", "requires_product_image_lock", "requires_competitor_assets", "estimated_shot_count", "duration"],
-  "pass_conditions": ["确认批次 ID 和数量", "逐视频必填项完整", "图片支撑生成等级", "不满足条件者被限制进入 A 级", "用户确认批次"]
+  "source_section": "00_design.md 第 15 章‘视频批次规划规则’；关联第 19 章‘输出验收标准’",
+  "authority": "00_design.md 是唯一权威源",
+  "version": "0.1.0",
+  "status": "draft",
+  "rules": {
+    "scope": {
+      "one_batch_one_selected_variant": true,
+      "required_binding_fields": [
+        "product_series_id",
+        "variant_id",
+        "batch_id"
+      ]
+    },
+    "batch_generation": {
+      "default_video_count": 3,
+      "maximum_video_count": 5,
+      "default_policy": "1A_1B_1C",
+      "sufficient_assets_policy": "2A_2B_1C",
+      "full_five_video_generation_blockers": [
+        "insufficient_product_images",
+        "unclear_selling_points",
+        "missing_human_assets",
+        "incomplete_compliance_information"
+      ]
+    },
+    "generation_levels": {
+      "A": {
+        "name": "完整生成",
+        "outputs": [
+          "creative_board",
+          "script",
+          "storyboard",
+          "shot_cards",
+          "seedance_prompts",
+          "image_input_plan",
+          "editing_plan",
+          "qc_checklist"
+        ]
+      },
+      "B": {
+        "name": "中度生成",
+        "outputs": [
+          "script",
+          "storyboard",
+          "main_shots",
+          "simplified_seedance_prompt",
+          "missing_image_notice"
+        ]
+      },
+      "C": {
+        "name": "轻量草案",
+        "outputs": [
+          "video_title",
+          "opening_hook",
+          "video_structure",
+          "core_selling_point",
+          "reference_shots"
+        ]
+      }
+    },
+    "batch_goals": [
+      "测试不同视频分型",
+      "测试不同开头钩子",
+      "测试不同卖点",
+      "测试不同使用场景",
+      "测试不同创意风格",
+      "测试不同用户痛点"
+    ],
+    "video_configuration_fields": [
+      "video_id",
+      "video_type",
+      "creative_style",
+      "main_selling_point",
+      "usage_scene",
+      "target_pain_point",
+      "generation_level",
+      "generate_seedance_prompts",
+      "requires_human_assets",
+      "requires_product_image_lock",
+      "requires_competitor_assets",
+      "estimated_shot_count",
+      "duration"
+    ],
+    "video_batch_plan_fields": [
+      "batch_id",
+      "product_series_id",
+      "variant_id",
+      "total_videos",
+      "batch_goal",
+      "default_generation_policy",
+      "videos"
+    ],
+    "pass_conditions": {
+      "batch_id_confirmed": true,
+      "video_count_confirmed": true,
+      "each_video_type_selected": true,
+      "each_video_main_selling_point_present": true,
+      "each_video_creative_style_present": true,
+      "each_video_generation_level_selected": true,
+      "image_assets_support_generation_level": true,
+      "unsupported_video_blocked_from_level_A": true,
+      "user_confirmed_batch_plan": true
+    }
+  },
+  "open_issues": [
+    {
+      "issue": "第 15、16 章允许 B 级中度输出和 C 级轻量草案，但第 19 章要求每条视频包含完整 Creative Board、镜头卡和镜头级提示词；不同生成等级如何适用统一验收清单尚未裁决。",
+      "resolution_status": "unresolved",
+      "must_not_resolve_in_rule_projection": true
+    }
+  ]
 }

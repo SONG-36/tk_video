@@ -1,10 +1,39 @@
 {
+  "rule_file": "platform_category_rules.json",
   "rule_set": "platform_category_rules",
-  "source_section": "00_design.md 第 7、9 章：类目确认页与页面进入条件",
-  "status": "skeleton",
+  "source_section": "00_design.md 第 7 章‘类目确认页’、第 9 章‘页面进入条件’",
+  "authority": "00_design.md 是唯一权威源",
+  "version": "0.1.0",
+  "status": "draft",
   "rules": {
-    "candidate_fields": ["primary_category", "sub_category", "confidence", "reason", "risk"],
+    "display_fields": [
+      "product_name",
+      "candidate_primary_category",
+      "candidate_secondary_category",
+      "confidence",
+      "recommendation_reason",
+      "risk_warning"
+    ],
+    "user_actions": [
+      "confirm_recommended_category",
+      "manually_change_category",
+      "return_to_edit_product_name"
+    ],
     "manual_confirmation_required": true,
-    "gate": "platform_category 和必要的 sub_category 已由用户确认"
-  }
+    "pass_conditions": {
+      "platform_category_confirmed": true,
+      "sub_category_confirmed_when_required": true,
+      "user_confirmation_required": true
+    },
+    "flow_gates": {
+      "requires_basic_info_completed": true,
+      "blocks_variant_business_confirmation_until_category_confirmed": true
+    }
+  },
+  "open_issues": [
+    {
+      "issue": "00_design.md 未定义平台类目完整树、候选生成算法或置信度计算方式。",
+      "resolution_status": "unresolved"
+    }
+  ]
 }

@@ -1,13 +1,66 @@
 {
+  "rule_file": "category_playbook_rules.json",
   "rule_set": "category_playbook_rules",
-  "source_section": "00_design.md 第 11 章：类目打法库",
-  "status": "skeleton",
-  "playbooks": {
-    "electronics": {"name": "3C 电子类", "covered_categories": ["Phones & Electronics", "Computers & Office Equipment"], "content_focus": ["强功能", "强演示", "强便利性", "多角度展示"], "opening_patterns": [], "must_show": [], "recommended_video_types": []},
-    "home": {"name": "日用家纺 / 家电 / 家具类", "covered_categories": ["Home Improvement", "Home Supplies", "Furniture", "Household Appliances", "Kitchenware", "Textiles & Soft Furnishings"], "content_focus": [], "opening_patterns": [], "must_show": [], "recommended_video_types": []},
-    "sports_outdoor": {"name": "运动器械 / 户外类", "covered_categories": ["Sports & Outdoor"], "content_focus": [], "opening_patterns": [], "must_show": [], "recommended_video_types": []},
-    "fashion": {"name": "服饰 / 鞋 / 珠宝 / 配饰 / 箱包类", "covered_categories": ["Womenswear & Underwear", "Menswear & Underwear", "Shoes", "Jewelry Accessories & Derivatives", "Fashion Accessories", "Luggage & Bags"], "content_focus": [], "opening_patterns": [], "must_show": [], "recommended_video_types": []},
-    "beauty": {"name": "美妆个护类", "covered_categories": ["Beauty & Personal Care"], "content_focus": [], "opening_patterns": [], "must_show": [], "recommended_video_types": []},
-    "food_daily_pet": {"name": "食品 / 日用品 / 宠物类", "covered_categories": ["Pet Supplies", "Food & Beverages"], "content_focus": [], "food_must_show": [], "pet_must_show": [], "recommended_video_types": []}
-  }
+  "source_section": "00_design.md 第 11 章‘类目打法库’",
+  "authority": "00_design.md 是唯一权威源",
+  "version": "0.1.0",
+  "status": "draft",
+  "rules": {
+    "playbooks": {
+      "electronics": {
+        "name": "3C 电子类",
+        "covered_categories": ["Phones & Electronics", "Computers & Office Equipment"],
+        "content_focus": ["强功能", "强演示", "强便利性", "多角度展示"],
+        "opening_patterns": ["大胆声明制造好奇", "以前麻烦现在简单", "第一次看到会震惊"],
+        "must_show": ["功能如何使用", "使用前后变化", "每个卖点的实物演示", "多角度商品细节"],
+        "recommended_video_types": ["selling_point", "unboxing", "evaluation_comparison"]
+      },
+      "home": {
+        "name": "日用家纺 / 家电 / 家具类",
+        "covered_categories": ["Home Improvement", "Home Supplies", "Furniture", "Household Appliances", "Kitchenware", "Textiles & Soft Furnishings"],
+        "content_focus": ["真实生活场景", "使用价值", "材质规格", "使用效果"],
+        "opening_patterns": ["强判断句", "直接指出痛点", "具体家庭场景"],
+        "must_show": ["使用场合", "使用效果", "材质", "容量", "尺寸", "功能", "真实体验", "不同角度和场景"],
+        "recommended_video_types": ["life_scenario", "selling_point", "buyer_seller_show"]
+      },
+      "sports_outdoor": {
+        "name": "运动器械 / 户外类",
+        "covered_categories": ["Sports & Outdoor"],
+        "content_focus": ["安装过程", "功能完整演示", "使用效果", "稳定性", "安全性", "便携性"],
+        "opening_patterns": ["直接展示运动或户外场景", "先给结果", "解决不方便"],
+        "must_show": ["安装过程", "使用过程", "功能细节", "体验差异", "稳定性", "安全性", "便携性"],
+        "recommended_video_types": ["life_scenario", "selling_point", "buyer_seller_show"]
+      },
+      "fashion": {
+        "name": "服饰 / 鞋 / 珠宝 / 配饰 / 箱包类",
+        "covered_categories": ["Womenswear & Underwear", "Menswear & Underwear", "Shoes", "Jewelry Accessories & Derivatives", "Fashion Accessories", "Luggage & Bags"],
+        "content_focus": ["真人展示", "尺码信息", "多角度细节", "场景搭配", "风格表达"],
+        "opening_patterns": ["TikTok Shop 发现", "商品适用人群", "通勤约会季节场景"],
+        "must_show": ["近景细节", "远景整体", "上身上脚上手", "尺码参考", "材质手感弹性", "使用季节或场景", "促销价格"],
+        "recommended_video_types": ["buyer_seller_show", "life_scenario", "unboxing"]
+      },
+      "beauty": {
+        "name": "美妆个护类",
+        "covered_categories": ["Beauty & Personal Care"],
+        "content_focus": ["真人效果", "步骤演示", "前后对比", "效果持续时间"],
+        "opening_patterns": ["好评切入", "效果教程", "短时间完成效果"],
+        "must_show": ["真人使用", "使用步骤", "前后对比", "维持时间", "使用体验", "安全性", "防烫", "便携", "适合人群"],
+        "recommended_video_types": ["buyer_seller_show", "selling_point", "evaluation_comparison"]
+      },
+      "food_daily_pet": {
+        "name": "食品 / 日用品 / 宠物类",
+        "covered_categories": ["Pet Supplies", "Food & Beverages"],
+        "content_focus": ["数量感", "过程感", "真实使用对象", "真实反应"],
+        "food_must_show": ["包装数量", "口味或种类", "装箱过程", "真实食用反应"],
+        "pet_must_show": ["宠物真实互动", "使用前后", "安全材质", "耐咬耐用", "清洁便利"],
+        "recommended_video_types": ["life_scenario", "unboxing", "buyer_seller_show"]
+      }
+    }
+  },
+  "open_issues": [
+    {
+      "issue": "00_design.md 第 11 章‘类目打法库’标题连续重复两次。",
+      "resolution_status": "unresolved"
+    }
+  ]
 }

@@ -1,11 +1,108 @@
 {
+  "rule_file": "product_classification_rules.json",
   "rule_set": "product_classification_rules",
-  "source_section": "00_design.md 第 10 章：商品分类规则",
-  "status": "skeleton",
-  "scope": "selected_variant_id",
-  "classifications": {
-    "small_standard": {"name": "小件标品", "covered_categories": ["Phones & Electronics", "Beauty & Personal Care", "Automotive & Motorcycle", "Fashion Accessories", "Tools & Hardware", "Home Supplies", "Household Appliances", "Luggage & Bags", "Home Improvement", "Toys & Hobbies", "Pet Supplies", "Computers & Office Equipment"], "scores": {"shooting_ease": 5, "seeding_ease": 4, "purchase_decision_ease": 3}, "features": [], "risks": []},
-    "non_standard": {"name": "非标品", "covered_categories": ["Womenswear & Underwear", "Jewelry Accessories & Derivatives", "Menswear & Underwear", "Shoes", "Food & Beverages"], "scores": {"shooting_ease": 3, "seeding_ease": 4, "purchase_decision_ease": 4}, "features": [], "risks": []},
-    "large_standard": {"name": "大件标品", "covered_categories": ["Sports & Outdoor", "Furniture", "Kitchenware", "Textiles & Soft Furnishings"], "scores": {"shooting_ease": 2, "seeding_ease": 4, "purchase_decision_ease": 3}, "features": [], "risks": []}
-  }
+  "source_section": "00_design.md 第 10 章‘商品分类规则’",
+  "authority": "00_design.md 是唯一权威源",
+  "version": "0.1.0",
+  "status": "draft",
+  "rules": {
+    "scope": "selected_variant_id",
+    "classifications": {
+      "small_standard": {
+        "name": "小件标品",
+        "covered_categories": [
+          "Phones & Electronics",
+          "Beauty & Personal Care",
+          "Automotive & Motorcycle",
+          "Fashion Accessories",
+          "Tools & Hardware",
+          "Home Supplies",
+          "Household Appliances",
+          "Luggage & Bags",
+          "Home Improvement",
+          "Toys & Hobbies",
+          "Pet Supplies",
+          "Computers & Office Equipment"
+        ],
+        "scores": {
+          "shooting_ease": 5,
+          "seeding_ease": 4,
+          "purchase_decision_ease": 3
+        },
+        "features": [
+          "low_shooting_cost",
+          "simple_scene",
+          "small_space_requirement",
+          "usually_no_external_model",
+          "small_and_easy_to_handle",
+          "clear_function_and_selling_points",
+          "relatively_low_price"
+        ],
+        "risks": [
+          "many_similar_products",
+          "concentrated_competition",
+          "differentiated_selling_points_required",
+          "low_price_quality_doubt",
+          "video_trust_building_required"
+        ]
+      },
+      "non_standard": {
+        "name": "非标品",
+        "covered_categories": [
+          "Womenswear & Underwear",
+          "Jewelry Accessories & Derivatives",
+          "Menswear & Underwear",
+          "Shoes",
+          "Food & Beverages"
+        ],
+        "scores": {
+          "shooting_ease": 3,
+          "seeding_ease": 4,
+          "purchase_decision_ease": 4
+        },
+        "features": [
+          "style_and_design_differences",
+          "suited_to_people_scenes_and_story",
+          "strong_emotional_value",
+          "style_and_self_fit_affect_decision"
+        ],
+        "risks": [
+          "higher_shooting_cost",
+          "localized_scene_required",
+          "model_or_person_may_be_required",
+          "high_color_material_detail_requirements",
+          "subjective_preference_variance",
+          "fine_audience_targeting_required"
+        ]
+      },
+      "large_standard": {
+        "name": "大件标品",
+        "covered_categories": [
+          "Sports & Outdoor",
+          "Furniture",
+          "Kitchenware",
+          "Textiles & Soft Furnishings"
+        ],
+        "scores": {
+          "shooting_ease": 2,
+          "seeding_ease": 4,
+          "purchase_decision_ease": 3
+        },
+        "features": [
+          "clear_consumer_pain_point",
+          "clear_usage_scene",
+          "specification_material_function_display",
+          "short_video_explains_value"
+        ],
+        "risks": [
+          "large_shooting_space",
+          "professional_equipment_may_be_required",
+          "high_unit_price_and_decision_cost",
+          "price_performance_concern",
+          "after_sales_installation_shipping_repair_concern"
+        ]
+      }
+    }
+  },
+  "open_issues": []
 }

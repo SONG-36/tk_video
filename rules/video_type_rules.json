@@ -1,17 +1,152 @@
 {
+  "rule_file": "video_type_rules.json",
   "rule_set": "video_type_rules",
-  "source_section": "00_design.md 第 11 章：视频分型规则",
-  "status": "skeleton",
-  "video_types": {
-    "life_scenario": {"name": "生活场景型", "definition": "商品与具体生活场景结合"},
-    "selling_point": {"name": "卖点讲解型", "definition": "围绕痛点、功能和优势展开"},
-    "unboxing": {"name": "开箱直拍型", "definition": "展示包装、全貌和细节"},
-    "buyer_seller_show": {"name": "买家卖家秀型", "definition": "真人或身体部位实测演示"},
-    "evaluation_comparison": {"name": "测评对比型", "definition": "同类或规格的客观对比"}
+  "source_section": "00_design.md 第 11 章‘视频分型规则’‘一级类目与视频分型推荐规则’",
+  "authority": "00_design.md 是唯一权威源",
+  "version": "0.1.0",
+  "status": "draft",
+  "rules": {
+    "scope": "selected_variant_id",
+    "recommendation_does_not_set_generation_count": true,
+    "score_scale": {
+      "0": "不推荐",
+      "1": "弱推荐",
+      "2": "推荐",
+      "3": "强推荐"
+    },
+    "video_types": {
+      "life_scenario": {
+        "name": "生活场景型",
+        "english_name": "Life scenarios connected",
+        "definition": "通过具体生活场景展示商品实际用途和价值",
+        "requirements": [
+          "real_life_scene_is_primary",
+          "product_explanation_by_subtitle_voice_or_visual",
+          "same_scene_multiple_product_angles_at_least_2_or_multiple_scenes_at_least_2"
+        ],
+        "suitable_products": [
+          "汽车用品",
+          "家居用品",
+          "宠物用品",
+          "户外用品",
+          "厨房用品",
+          "日用家电",
+          "清洁工具"
+        ]
+      },
+      "selling_point": {
+        "name": "卖点讲解型",
+        "english_name": "Selling points presentation",
+        "definition": "围绕痛点、功能、独特优势、价格或优惠展开",
+        "requirements": [
+          "product_is_primary_subject",
+          "high_product_screen_time_and_share",
+          "at_least_2_types_of_product_information"
+        ],
+        "suitable_products": [
+          "功能明确的小件标品",
+          "3C 电子",
+          "工具五金",
+          "车载用品",
+          "小家电",
+          "美容个护电器"
+        ]
+      },
+      "unboxing": {
+        "name": "开箱直拍型",
+        "english_name": "Unboxing",
+        "definition": "展示打开包装、商品全貌和商品细节的全过程",
+        "requirements": [
+          "product_is_primary_subject",
+          "details_are_clear",
+          "opening_package_full_view_and_details",
+          "music_subtitle_or_narration"
+        ],
+        "suitable_products": [
+          "有包装价值的商品",
+          "礼盒类商品",
+          "配件丰富的商品",
+          "外观精致的商品",
+          "新品展示"
+        ],
+        "auxiliary_by_default": true
+      },
+      "buyer_seller_show": {
+        "name": "买家卖家秀型",
+        "english_name": "Buyer or Seller Show",
+        "definition": "真人或身体部位实测、使用和讲解",
+        "requirements": [
+          "person_or_body_part_is_primary_subject",
+          "human_or_body_part_appears",
+          "person_describes_uses_or_tests_product",
+          "detailed_product_function_or_experience"
+        ],
+        "suitable_products": [
+          "服饰",
+          "鞋子",
+          "珠宝配饰",
+          "美妆个护",
+          "发型工具",
+          "需要真人效果展示的商品",
+          "需要尺寸参考的商品"
+        ]
+      },
+      "evaluation_comparison": {
+        "name": "测评对比型",
+        "english_name": "Evaluation and comparison type",
+        "definition": "通过同类商品或不同规格的客观对比突出差异",
+        "requirements": [
+          "at_least_1_comparable_product_or_variant",
+          "objective_advantage_and_disadvantage_display",
+          "no_obvious_bias"
+        ],
+        "suitable_products": [
+          "同质化严重的商品",
+          "功能可测试的商品",
+          "参数可对比的商品",
+          "购买前会横向比较的商品"
+        ]
+      }
+    },
+    "primary_category_scores": [
+      {"category": "Phones & Electronics", "classification": "小件标品", "life_scenario": 2, "selling_point": 3, "unboxing": 2, "buyer_seller_show": 2, "evaluation_comparison": 0},
+      {"category": "Beauty & Personal Care", "classification": "小件标品", "life_scenario": 2, "selling_point": 0, "unboxing": 0, "buyer_seller_show": 3, "evaluation_comparison": 0},
+      {"category": "Automotive & Motorcycle", "classification": "小件标品", "life_scenario": 3, "selling_point": 2, "unboxing": 0, "buyer_seller_show": 2, "evaluation_comparison": 2},
+      {"category": "Fashion Accessories", "classification": "小件标品", "life_scenario": 3, "selling_point": 3, "unboxing": 2, "buyer_seller_show": 2, "evaluation_comparison": 0},
+      {"category": "Tools & Hardware", "classification": "小件标品", "life_scenario": 3, "selling_point": 2, "unboxing": 2, "buyer_seller_show": 2, "evaluation_comparison": 0},
+      {"category": "Home Supplies", "classification": "小件标品", "life_scenario": 3, "selling_point": 2, "unboxing": 0, "buyer_seller_show": 2, "evaluation_comparison": 0},
+      {"category": "Household Appliances", "classification": "小件标品", "life_scenario": 3, "selling_point": 0, "unboxing": 0, "buyer_seller_show": 3, "evaluation_comparison": 0},
+      {"category": "Luggage & Bags", "classification": "小件标品", "life_scenario": 3, "selling_point": 2, "unboxing": 2, "buyer_seller_show": 0, "evaluation_comparison": 0},
+      {"category": "Home Improvement", "classification": "小件标品", "life_scenario": 3, "selling_point": 0, "unboxing": 2, "buyer_seller_show": 3, "evaluation_comparison": 0},
+      {"category": "Toys & Hobbies", "classification": "小件标品", "life_scenario": 2, "selling_point": 3, "unboxing": 2, "buyer_seller_show": 3, "evaluation_comparison": 0},
+      {"category": "Pet Supplies", "classification": "小件标品", "life_scenario": 3, "selling_point": 0, "unboxing": 2, "buyer_seller_show": 0, "evaluation_comparison": 0},
+      {"category": "Computers & Office Equipment", "classification": "小件标品", "life_scenario": 3, "selling_point": 2, "unboxing": 0, "buyer_seller_show": 2, "evaluation_comparison": 0},
+      {"category": "Womenswear & Underwear", "classification": "非标品", "life_scenario": 0, "selling_point": 2, "unboxing": 0, "buyer_seller_show": 3, "evaluation_comparison": 0},
+      {"category": "Jewelry Accessories & Derivatives", "classification": "非标品", "life_scenario": 0, "selling_point": 3, "unboxing": 0, "buyer_seller_show": 0, "evaluation_comparison": 0},
+      {"category": "Menswear & Underwear", "classification": "非标品", "life_scenario": 2, "selling_point": 0, "unboxing": 0, "buyer_seller_show": 3, "evaluation_comparison": 2},
+      {"category": "Shoes", "classification": "非标品", "life_scenario": 0, "selling_point": 3, "unboxing": 0, "buyer_seller_show": 3, "evaluation_comparison": 0},
+      {"category": "Food & Beverages", "classification": "非标品", "life_scenario": 0, "selling_point": 0, "unboxing": 0, "buyer_seller_show": 3, "evaluation_comparison": 3},
+      {"category": "Sports & Outdoor", "classification": "大件标品", "life_scenario": 2, "selling_point": 2, "unboxing": 0, "buyer_seller_show": 3, "evaluation_comparison": 0},
+      {"category": "Furniture", "classification": "大件标品", "life_scenario": 3, "selling_point": 0, "unboxing": 0, "buyer_seller_show": 3, "evaluation_comparison": 0},
+      {"category": "Kitchenware", "classification": "大件标品", "life_scenario": 3, "selling_point": 2, "unboxing": 0, "buyer_seller_show": 3, "evaluation_comparison": 0},
+      {"category": "Textiles & Soft Furnishings", "classification": "大件标品", "life_scenario": 2, "selling_point": 0, "unboxing": 2, "buyer_seller_show": 3, "evaluation_comparison": 0}
+    ],
+    "profile_adjustments": [
+      {"condition": "requires_model == true", "changes": {"buyer_seller_show": 1}},
+      {"condition": "has_clear_function == true", "changes": {"selling_point": 1}},
+      {"condition": "requires_large_scene == true", "changes": {"life_scenario": 1}},
+      {"condition": "suitable_for_comparison == true", "changes": {"evaluation_comparison": 1}},
+      {"condition": "style_sensitive == true", "changes": {"buyer_seller_show": 1, "life_scenario": 1}},
+      {"condition": "product_has_packaging == true", "changes": {"unboxing": 1}},
+      {"condition": "is_high_price == true", "changes": {"evaluation_comparison": 1, "selling_point": 1}},
+      {"condition": "is_electronic == true", "changes": {"selling_point": 1, "evaluation_comparison": 1}}
+    ],
+    "execution_limits": [
+      {"video_type": "unboxing", "condition": "packaging_exists", "effect": "must_not_automatically_become_top_priority"},
+      {"video_type": "buyer_seller_show", "condition": "human_assets_missing", "effect": "recommended_but_not_executable"},
+      {"video_type": "evaluation_comparison", "condition": "comparison_object_missing", "effect": "recommended_but_not_executable"},
+      {"video_type": "life_scenario", "condition": "real_scene_assets_missing", "effect": "executable_with_scene_shooting_list"}
+    ]
   },
-  "category_score_scale": {"minimum": 0, "maximum": 3},
-  "primary_category_score_table": [],
-  "profile_adjustments": {"requires_model": {"buyer_seller_show": 1}, "has_clear_function": {"selling_point": 1}, "requires_large_scene": {"life_scenario": 1}, "suitable_for_comparison": {"evaluation_comparison": 1}, "style_sensitive": {"buyer_seller_show": 1, "life_scenario": 1}, "product_has_packaging": {"unboxing": 1}, "is_high_price": {"evaluation_comparison": 1, "selling_point": 1}, "is_electronic": {"selling_point": 1, "evaluation_comparison": 1}},
-  "limitations": ["开箱不得仅因包装存在成为最高优先级", "真人素材缺失时买家卖家秀只能标记推荐但不可执行", "对比对象缺失时测评对比只能标记推荐但不可执行", "真实场景素材缺失时生活场景型必须生成场景拍摄清单"],
-  "generation_count_controlled_by": "video_batch_plan"
+  "open_issues": []
 }

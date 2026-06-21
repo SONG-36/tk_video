@@ -1,11 +1,121 @@
 {
+  "rule_file": "shot_planning_rules.json",
   "rule_set": "shot_planning_rules",
-  "source_section": "00_design.md 第 16 章：镜头资产规划规则",
-  "status": "skeleton",
-  "asset_hierarchy": {"creative_board": "每条视频一个", "storyboard": "每条视频一个", "shot_card": "每个镜头一个", "seedance_prompt": "每个镜头一个"},
-  "recommended_shot_counts": {"15_seconds": "3-5", "20_to_30_seconds": "5-8", "complex_story": "8-10"},
-  "valid_shot_goals": ["放大痛点", "展示产品", "证明卖点", "建立信任", "推动剧情", "促进转化"],
-  "shot_card_fields": ["shot_id", "video_id", "duration", "goal", "video_type", "visual_content", "subject_action", "product_visible", "product_appearance", "selling_point", "subtitle", "voiceover", "camera_movement", "visual_texture", "lighting", "input_images", "reference_videos", "product_constraints", "negative_prompt", "distortion_risk", "output_goal"],
-  "prompt_fields": ["shot_id", "duration", "input_images", "reference_videos", "main_subject", "scene", "action", "camera_movement", "lighting", "style", "composition", "product_constraints", "subtitle_text", "negative_prompt", "output_goal"],
-  "pass_conditions": ["A/B/C 级资产满足各自完整度", "每个镜头图片绑定或标记不需要", "每个镜头标记失真风险和服务目标"]
+  "source_section": "00_design.md 第 16 章‘镜头资产规划规则’；关联第 19 章‘输出验收标准’",
+  "authority": "00_design.md 是唯一权威源",
+  "version": "0.1.0",
+  "status": "draft",
+  "rules": {
+    "scope": {
+      "serves_video_batch": true,
+      "required_binding_fields": [
+        "product_series_id",
+        "variant_id",
+        "batch_id"
+      ]
+    },
+    "asset_hierarchy": {
+      "creative_board": {
+        "count_per_video": 1,
+        "purpose": "整体创意、卖点、风格、参考素材和禁区"
+      },
+      "storyboard": {
+        "count_per_video": 1,
+        "purpose": "镜头顺序、时长、画面、字幕和节奏"
+      },
+      "shot_card": {
+        "count_per_shot": 1,
+        "purpose": "镜头执行要求"
+      },
+      "seedance_prompt": {
+        "count_per_shot": 1,
+        "purpose": "视频模型镜头级具体提示词"
+      }
+    },
+    "recommended_shot_counts": [
+      {"video_duration": "15 秒", "minimum": 3, "maximum": 5},
+      {"video_duration": "20-30 秒", "minimum": 5, "maximum": 8},
+      {"video_duration": "复杂剧情视频", "minimum": 8, "maximum": 10}
+    ],
+    "valid_shot_goals": [
+      "放大痛点",
+      "展示产品",
+      "证明卖点",
+      "建立信任",
+      "推动剧情",
+      "促进转化"
+    ],
+    "shot_count_must_not_increase_for_professional_appearance": true,
+    "shot_card_fields": [
+      "shot_id",
+      "video_id",
+      "duration",
+      "goal",
+      "video_type",
+      "visual_content",
+      "subject_action",
+      "product_visible",
+      "product_appearance",
+      "selling_point",
+      "subtitle_text",
+      "voiceover_text",
+      "camera_movement",
+      "visual_texture",
+      "lighting",
+      "input_images",
+      "reference_videos",
+      "product_constraints",
+      "negative_prompt",
+      "distortion_risk",
+      "output_goal"
+    ],
+    "seedance_prompt_fields": [
+      "shot_id",
+      "duration",
+      "input_images",
+      "reference_videos",
+      "main_subject",
+      "scene",
+      "action",
+      "camera_movement",
+      "lighting",
+      "style",
+      "composition",
+      "product_constraints",
+      "subtitle_text",
+      "negative_prompt",
+      "output_goal"
+    ],
+    "pass_conditions_by_level": {
+      "A": [
+        "one_creative_board_per_video",
+        "one_storyboard_per_video",
+        "shot_card_for_every_shot",
+        "input_image_bound_or_not_required_marked_for_every_shot",
+        "seedance_prompt_draft_for_every_shot"
+      ],
+      "B": [
+        "simplified_storyboard",
+        "main_shot_descriptions"
+      ],
+      "C": [
+        "lightweight_draft"
+      ]
+    },
+    "pass_conditions_for_all_shots": [
+      "distortion_risk_marked",
+      "selling_point_or_story_goal_confirmed"
+    ]
+  },
+  "open_issues": [
+    {
+      "issue": "第 16 章按 A/B/C 级区分镜头资产完整度，但第 19 章对每条视频统一要求完整镜头卡和镜头级提示词；适用关系尚未裁决。",
+      "resolution_status": "unresolved",
+      "must_not_resolve_in_rule_projection": true
+    },
+    {
+      "issue": "第 18 章 shot_asset_plan 示例未在对象自身显式展示 product_series_id、variant_id、batch_id，但数据归属硬规则要求三者齐全。",
+      "resolution_status": "unresolved"
+    }
+  ]
 }

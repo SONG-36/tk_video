@@ -1,7 +1,41 @@
 {
+  "rule_file": "variant_difference_rules.json",
   "rule_set": "variant_difference_rules",
-  "source_section": "00_design.md 第 6 章：型号差异判断",
-  "status": "skeleton",
-  "compare_fields": ["variant_and_sku", "appearance_and_color", "size_and_weight", "functions_and_parameters", "buttons_ports_display", "packaging_and_accessories", "price_and_selling_points", "image_shareability", "video_type_fit", "compliance_and_safety"],
-  "separate_content_when_affecting": ["visuals", "parameters", "selling_points", "accessories", "compliance"]
+  "source_section": "00_design.md 第 6 章‘型号差异判断’、第 7 章‘型号差异判断页’",
+  "authority": "00_design.md 是唯一权威源",
+  "version": "0.1.0",
+  "status": "draft",
+  "rules": {
+    "compare_dimensions": [
+      "variant_name_and_sku_code",
+      "appearance_structure_and_color",
+      "size_and_weight",
+      "functions_and_parameters",
+      "buttons_ports_and_display_areas",
+      "packaging_and_accessories",
+      "price_and_primary_selling_points",
+      "product_image_shareability",
+      "video_type_fit",
+      "compliance_and_safety_information"
+    ],
+    "content_separation_required_when_difference_affects": [
+      "visuals",
+      "parameters",
+      "selling_points",
+      "accessories",
+      "compliance_expression"
+    ],
+    "output_fields": [
+      "checked",
+      "shareable_fields",
+      "non_shareable_fields",
+      "content_must_be_separated"
+    ],
+    "pass_conditions": {
+      "variants_recorded": true,
+      "all_recorded_variants_compared": true,
+      "separation_decision_confirmed": true
+    }
+  },
+  "open_issues": []
 }
