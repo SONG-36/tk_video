@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "material_check.schema.json",
+  "title": "Material Check",
+  "description": "当前目标型号的材料检查结果。风险缺失必须进入 do_not_invent。",
+  "type": "object",
+  "required": ["product_series_id", "variant_id", "required_materials", "recommended_materials", "risk_materials", "missing_materials", "do_not_invent", "can_continue"],
+  "properties": {
+    "product_series_id": {"type": "string", "minLength": 1},
+    "variant_id": {"type": "string", "minLength": 1},
+    "required_materials": {"type": "array", "items": {"type": "object"}},
+    "recommended_materials": {"type": "array", "items": {"type": "object"}},
+    "risk_materials": {"type": "array", "items": {"type": "object"}},
+    "missing_materials": {"type": "array", "items": {"type": "string"}},
+    "do_not_invent": {"type": "array", "items": {"type": "string"}},
+    "can_continue": {"type": "boolean"}
+  },
+  "additionalProperties": true
+}

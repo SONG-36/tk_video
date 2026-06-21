@@ -1,0 +1,11 @@
+{
+  "rule_set": "shot_planning_rules",
+  "source_section": "00_design.md 第 16 章：镜头资产规划规则",
+  "status": "skeleton",
+  "asset_hierarchy": {"creative_board": "每条视频一个", "storyboard": "每条视频一个", "shot_card": "每个镜头一个", "seedance_prompt": "每个镜头一个"},
+  "recommended_shot_counts": {"15_seconds": "3-5", "20_to_30_seconds": "5-8", "complex_story": "8-10"},
+  "valid_shot_goals": ["放大痛点", "展示产品", "证明卖点", "建立信任", "推动剧情", "促进转化"],
+  "shot_card_fields": ["shot_id", "video_id", "duration", "goal", "video_type", "visual_content", "subject_action", "product_visible", "product_appearance", "selling_point", "subtitle", "voiceover", "camera_movement", "visual_texture", "lighting", "input_images", "reference_videos", "product_constraints", "negative_prompt", "distortion_risk", "output_goal"],
+  "prompt_fields": ["shot_id", "duration", "input_images", "reference_videos", "main_subject", "scene", "action", "camera_movement", "lighting", "style", "composition", "product_constraints", "subtitle_text", "negative_prompt", "output_goal"],
+  "pass_conditions": ["A/B/C 级资产满足各自完整度", "每个镜头图片绑定或标记不需要", "每个镜头标记失真风险和服务目标"]
+}

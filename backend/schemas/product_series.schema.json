@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "product_series.schema.json",
+  "title": "Product Series",
+  "description": "商品系列主对象。selected_variant_id 必须引用 variants 中的 variant_id；该跨数组约束需由 validators 进一步校验。",
+  "type": "object",
+  "required": ["product_series_id", "product_series_name", "platform_category", "target_market", "variants", "selected_variant_id"],
+  "properties": {
+    "product_series_id": {"type": "string", "minLength": 1},
+    "product_series_name": {"type": "string", "minLength": 1},
+    "platform_category": {"type": "string", "minLength": 1},
+    "target_market": {"type": "string", "minLength": 1},
+    "variants": {"type": "array", "minItems": 1, "items": {"$ref": "variant.schema.json"}},
+    "variant_difference_report": {"type": "object"},
+    "selected_variant_id": {"type": "string", "minLength": 1},
+    "video_batch_plan": {"$ref": "video_batch_plan.schema.json"}
+  },
+  "additionalProperties": true
+}

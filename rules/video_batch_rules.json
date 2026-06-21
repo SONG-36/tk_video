@@ -1,0 +1,10 @@
+{
+  "rule_set": "video_batch_rules",
+  "source_section": "00_design.md 第 15 章：视频批次规划规则",
+  "status": "skeleton",
+  "batch_generation": {"default_count": 3, "maximum_count": 5, "default_policy": "1A_1B_1C", "sufficient_assets_policy": "2A_2B_1C"},
+  "generation_levels": {"A": ["Creative Board", "Script", "Storyboard", "Shot Cards", "Seedance Prompts", "Image Input Plan", "Editing Plan", "QC Checklist"], "B": ["Script", "Storyboard", "主要镜头", "简版 Seedance Prompt", "缺图提醒"], "C": ["视频标题", "开头钩子", "视频结构", "核心卖点", "参考镜头"]},
+  "batch_goals": ["测试不同视频分型", "测试不同开头钩子", "测试不同卖点", "测试不同使用场景", "测试不同创意风格", "测试不同用户痛点"],
+  "video_fields": ["video_id", "video_type", "creative_style", "main_selling_point", "usage_scene", "target_pain_point", "generation_level", "generate_seedance_prompts", "requires_human_assets", "requires_product_image_lock", "requires_competitor_assets", "estimated_shot_count", "duration"],
+  "pass_conditions": ["确认批次 ID 和数量", "逐视频必填项完整", "图片支撑生成等级", "不满足条件者被限制进入 A 级", "用户确认批次"]
+}

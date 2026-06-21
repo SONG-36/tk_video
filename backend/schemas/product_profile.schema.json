@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "product_profile.schema.json",
+  "title": "Variant Product Profile",
+  "description": "目标型号画像，必须绑定系列和当前 variant_id。",
+  "type": "object",
+  "required": ["product_series_id", "variant_id", "product_profile"],
+  "properties": {
+    "product_series_id": {"type": "string", "minLength": 1},
+    "variant_id": {"type": "string", "minLength": 1},
+    "product_profile": {
+      "type": "object",
+      "required": ["size", "requires_model", "requires_large_scene", "has_clear_function", "style_sensitive", "suitable_for_comparison", "product_has_packaging", "selling_point_types"],
+      "properties": {
+        "size": {"type": "string"},
+        "requires_model": {"type": "boolean"},
+        "requires_large_scene": {"type": "boolean"},
+        "has_clear_function": {"type": "boolean"},
+        "style_sensitive": {"type": "boolean"},
+        "suitable_for_comparison": {"type": "boolean"},
+        "product_has_packaging": {"type": "boolean"},
+        "selling_point_types": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

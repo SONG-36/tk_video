@@ -1,0 +1,11 @@
+{
+  "rule_set": "product_classification_rules",
+  "source_section": "00_design.md 第 10 章：商品分类规则",
+  "status": "skeleton",
+  "scope": "selected_variant_id",
+  "classifications": {
+    "small_standard": {"name": "小件标品", "covered_categories": ["Phones & Electronics", "Beauty & Personal Care", "Automotive & Motorcycle", "Fashion Accessories", "Tools & Hardware", "Home Supplies", "Household Appliances", "Luggage & Bags", "Home Improvement", "Toys & Hobbies", "Pet Supplies", "Computers & Office Equipment"], "scores": {"shooting_ease": 5, "seeding_ease": 4, "purchase_decision_ease": 3}, "features": [], "risks": []},
+    "non_standard": {"name": "非标品", "covered_categories": ["Womenswear & Underwear", "Jewelry Accessories & Derivatives", "Menswear & Underwear", "Shoes", "Food & Beverages"], "scores": {"shooting_ease": 3, "seeding_ease": 4, "purchase_decision_ease": 4}, "features": [], "risks": []},
+    "large_standard": {"name": "大件标品", "covered_categories": ["Sports & Outdoor", "Furniture", "Kitchenware", "Textiles & Soft Furnishings"], "scores": {"shooting_ease": 2, "seeding_ease": 4, "purchase_decision_ease": 3}, "features": [], "risks": []}
+  }
+}

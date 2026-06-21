@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "video_batch_plan.schema.json",
+  "title": "Video Batch Plan",
+  "description": "唯一绑定 product_series_id + variant_id + batch_id 的视频批次；variant_id 必须等于 selected_variant_id。",
+  "type": "object",
+  "required": ["video_batch_plan"],
+  "properties": {
+    "video_batch_plan": {
+      "type": "object",
+      "required": ["batch_id", "product_series_id", "variant_id", "total_videos", "batch_goal", "default_generation_policy", "videos"],
+      "properties": {
+        "batch_id": {"type": "string", "minLength": 1},
+        "product_series_id": {"type": "string", "minLength": 1},
+        "variant_id": {"type": "string", "minLength": 1},
+        "total_videos": {"type": "integer", "minimum": 3, "maximum": 5},
+        "batch_goal": {"type": "string", "minLength": 1},
+        "default_generation_policy": {"enum": ["1A_1B_1C", "2A_2B_1C"]},
+        "videos": {
+          "type": "array", "minItems": 3, "maxItems": 5,
+          "items": {"type": "object", "required": ["video_id", "video_type", "creative_style", "main_selling_point", "generation_level"], "properties": {"video_id": {"type": "string"}, "video_type": {"type": "string"}, "creative_style": {"type": "string"}, "main_selling_point": {"type": "string"}, "generation_level": {"enum": ["A", "B", "C"]}}, "additionalProperties": true}
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

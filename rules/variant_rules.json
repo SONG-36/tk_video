@@ -1,0 +1,12 @@
+{
+  "rule_set": "variant_rules",
+  "source_section": "00_design.md 第 5、6、7、18 章",
+  "status": "skeleton",
+  "rules": {
+    "minimum_variants": 1,
+    "single_variant_creates_default": true,
+    "fields": ["variant_id", "variant_name", "seller_sku", "platform_sku", "color", "size", "core_parameters", "accessories", "price", "image_asset_ids"],
+    "optional_revision_default": null,
+    "selected_variant_required_before_profile": true
+  }
+}

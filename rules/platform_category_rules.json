@@ -1,0 +1,10 @@
+{
+  "rule_set": "platform_category_rules",
+  "source_section": "00_design.md 第 7、9 章：类目确认页与页面进入条件",
+  "status": "skeleton",
+  "rules": {
+    "candidate_fields": ["primary_category", "sub_category", "confidence", "reason", "risk"],
+    "manual_confirmation_required": true,
+    "gate": "platform_category 和必要的 sub_category 已由用户确认"
+  }
+}

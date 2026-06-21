@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "codex_task_package.schema.json",
+  "title": "Codex Task Package",
+  "description": "任务包必须唯一绑定 product_series_id + variant_id + batch_id，并将缺失风险转为禁止编造约束。",
+  "type": "object",
+  "required": ["product_series_id", "variant_id", "batch_id", "judgement_report", "video_batch_plan", "shot_asset_plan", "available_materials", "missing_materials", "do_not_invent", "output_root"],
+  "properties": {
+    "product_series_id": {"type": "string", "minLength": 1},
+    "variant_id": {"type": "string", "minLength": 1},
+    "batch_id": {"type": "string", "minLength": 1},
+    "judgement_report": {"type": "object"},
+    "video_batch_plan": {"type": "object"},
+    "shot_asset_plan": {"type": "object"},
+    "available_materials": {"type": "array"},
+    "missing_materials": {"type": "array"},
+    "do_not_invent": {"type": "array", "items": {"type": "string"}},
+    "output_root": {"type": "string", "pattern": "^outputs/[^/]+/[^/]+/?$"}
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "shot_asset_plan.schema.json",
+  "title": "Shot Asset Plan",
+  "description": "镜头资产计划；三类 ID 必须与来源 video_batch_plan 完全一致。",
+  "type": "object",
+  "required": ["shot_asset_plan"],
+  "properties": {
+    "shot_asset_plan": {
+      "type": "object",
+      "required": ["product_series_id", "variant_id", "batch_id", "videos"],
+      "properties": {
+        "product_series_id": {"type": "string", "minLength": 1},
+        "variant_id": {"type": "string", "minLength": 1},
+        "batch_id": {"type": "string", "minLength": 1},
+        "videos": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["video_id", "shots"],
+            "properties": {
+              "video_id": {"type": "string"},
+              "creative_board_path": {"type": "string"},
+              "storyboard_path": {"type": "string"},
+              "shots": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["shot_id", "duration", "goal", "product_visible", "input_images", "distortion_risk"],
+                  "additionalProperties": true
+                }
+              }
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

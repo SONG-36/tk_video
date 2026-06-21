@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "validate-structure",
+      "type": "shell",
+      "command": "python scripts/validate_structure.py",
+      "problemMatcher": []
+    },
+    {
+      "label": "validate-design-sync",
+      "type": "shell",
+      "command": "python scripts/validate_design_sync.py",
+      "problemMatcher": []
+    },
+    {
+      "label": "export-codex-task",
+      "type": "shell",
+      "command": "python scripts/export_codex_task.py",
+      "problemMatcher": []
+    },
+    {
+      "label": "read-outputs",
+      "type": "shell",
+      "command": "python scripts/read_outputs.py",
+      "problemMatcher": []
+    }
+  ]
+}

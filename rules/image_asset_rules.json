@@ -1,0 +1,10 @@
+{
+  "rule_set": "image_asset_rules",
+  "source_section": "00_design.md 第 13 章：产品图片资产规则",
+  "status": "skeleton",
+  "asset_types": ["product_reference", "product_detail", "usage_scene", "before_after", "packaging", "style_reference", "motion_reference"],
+  "minimum_requirements": {"general_product": ["front", "side", "back", "45_degree", "scale_reference", "detail", "accessories", "packaging"], "electrical_extra": ["buttons", "charging_port", "display_or_indicator", "connector_or_plug", "nameplate", "safety_label", "accessory_group"], "effect_product_extra": ["before", "during", "after", "real_scene", "human_hand_or_pet_interaction"]},
+  "completeness_levels": [{"image_count": "0-2", "capability": "禁止生成镜头级提示词"}, {"image_count": "3-5", "capability": "基础提示词，高失真风险"}, {"image_count": "6-8", "capability": "标准提示词，提示缺失角度"}, {"image_count": "8+且覆盖多角度细节场景", "capability": "高质量镜头级提示词"}],
+  "shot_binding_fields": ["input_images", "shape_lock_images", "scene_reference_images", "composition_reference_images", "motion_reference", "distortion_risk"],
+  "pass_conditions": ["上传或明确标记缺失", "完成资产类型和关键用途标记", "生成完整度、缺图和能力限制"]
+}

@@ -1,0 +1,10 @@
+{
+  "rule_set": "creative_translation_rules",
+  "source_section": "00_design.md 第 14 章：创意方向设定规则",
+  "status": "skeleton",
+  "inputs": {"creative_styles": [], "story_structures": [], "expression_levels": ["保守真实", "中等夸张", "强戏剧化"], "human_policies": ["不允许真人", "只允许手部", "允许真人但不露脸", "允许真人露脸"], "selling_point_focus": []},
+  "translation_outputs": ["camera_language", "visual_texture", "shot_rhythm", "lighting", "reference_assets", "shot_prompt_requirements"],
+  "priority": ["产品清晰度", "卖点表达", "用户痛点", "创意剧情", "运镜炫技"],
+  "prohibitions": ["产品变形", "改变产品颜色", "不存在的配件", "编造参数", "夸大功效", "过度恶心脏污", "未经授权元素", "为电影感牺牲产品识别度"],
+  "pass_conditions": ["至少一个风格和剧情结构", "选择强度和真人限制", "确认优先级", "生成并确认专业翻译"]
+}

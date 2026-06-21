@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "creative_direction.schema.json",
+  "title": "Creative Direction",
+  "description": "目标型号的用户创意选择及系统专业翻译。",
+  "type": "object",
+  "required": ["product_series_id", "variant_id", "creative_direction", "confirmed_by_user"],
+  "properties": {
+    "product_series_id": {"type": "string", "minLength": 1},
+    "variant_id": {"type": "string", "minLength": 1},
+    "creative_direction": {
+      "type": "object",
+      "required": ["selected_styles", "story_structures", "expression_level", "human_policy", "system_translation"],
+      "properties": {
+        "selected_styles": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "story_structures": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "expression_level": {"type": "string"},
+        "human_policy": {"type": "string"},
+        "system_translation": {"type": "object"}
+      },
+      "additionalProperties": true
+    },
+    "confirmed_by_user": {"type": "boolean"}
+  },
+  "additionalProperties": true
+}

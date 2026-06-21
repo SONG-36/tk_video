@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "judgement_report.schema.json",
+  "title": "Variant Judgement Report",
+  "description": "型号级判断报告；variant_id 必须等于系列 selected_variant_id。",
+  "type": "object",
+  "required": ["product_series_id", "variant_id", "classification_report", "video_fit_report", "category_playbook", "risks", "missing_information", "confirmed_by_user"],
+  "properties": {
+    "product_series_id": {"type": "string", "minLength": 1},
+    "variant_id": {"type": "string", "minLength": 1},
+    "classification_report": {"type": "object"},
+    "video_fit_report": {"type": "object"},
+    "category_playbook": {"type": "object"},
+    "risks": {"type": "array", "items": {"type": "string"}},
+    "missing_information": {"type": "array", "items": {"type": "string"}},
+    "confirmed_by_user": {"type": "boolean"}
+  },
+  "additionalProperties": true
+}

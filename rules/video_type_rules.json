@@ -1,0 +1,17 @@
+{
+  "rule_set": "video_type_rules",
+  "source_section": "00_design.md 第 11 章：视频分型规则",
+  "status": "skeleton",
+  "video_types": {
+    "life_scenario": {"name": "生活场景型", "definition": "商品与具体生活场景结合"},
+    "selling_point": {"name": "卖点讲解型", "definition": "围绕痛点、功能和优势展开"},
+    "unboxing": {"name": "开箱直拍型", "definition": "展示包装、全貌和细节"},
+    "buyer_seller_show": {"name": "买家卖家秀型", "definition": "真人或身体部位实测演示"},
+    "evaluation_comparison": {"name": "测评对比型", "definition": "同类或规格的客观对比"}
+  },
+  "category_score_scale": {"minimum": 0, "maximum": 3},
+  "primary_category_score_table": [],
+  "profile_adjustments": {"requires_model": {"buyer_seller_show": 1}, "has_clear_function": {"selling_point": 1}, "requires_large_scene": {"life_scenario": 1}, "suitable_for_comparison": {"evaluation_comparison": 1}, "style_sensitive": {"buyer_seller_show": 1, "life_scenario": 1}, "product_has_packaging": {"unboxing": 1}, "is_high_price": {"evaluation_comparison": 1, "selling_point": 1}, "is_electronic": {"selling_point": 1, "evaluation_comparison": 1}},
+  "limitations": ["开箱不得仅因包装存在成为最高优先级", "真人素材缺失时买家卖家秀只能标记推荐但不可执行", "对比对象缺失时测评对比只能标记推荐但不可执行", "真实场景素材缺失时生活场景型必须生成场景拍摄清单"],
+  "generation_count_controlled_by": "video_batch_plan"
+}

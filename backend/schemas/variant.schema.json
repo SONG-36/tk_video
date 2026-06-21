@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "variant.schema.json",
+  "title": "Variant / SKU",
+  "description": "可独立选择、拍摄和销售的型号。型号专属外观、参数、配件、图片和限制不得提升为系列共享数据。",
+  "type": "object",
+  "required": ["variant_id", "variant_name", "attributes", "image_asset_ids", "optional_revision"],
+  "properties": {
+    "variant_id": {"type": "string", "minLength": 1},
+    "seller_sku": {"type": "string"},
+    "platform_sku": {"type": "string"},
+    "variant_name": {"type": "string", "minLength": 1},
+    "attributes": {"type": "object"},
+    "image_asset_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "optional_revision": {"type": ["object", "null"], "default": null}
+  },
+  "additionalProperties": true
+}

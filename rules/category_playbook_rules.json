@@ -1,0 +1,13 @@
+{
+  "rule_set": "category_playbook_rules",
+  "source_section": "00_design.md 第 11 章：类目打法库",
+  "status": "skeleton",
+  "playbooks": {
+    "electronics": {"name": "3C 电子类", "covered_categories": ["Phones & Electronics", "Computers & Office Equipment"], "content_focus": ["强功能", "强演示", "强便利性", "多角度展示"], "opening_patterns": [], "must_show": [], "recommended_video_types": []},
+    "home": {"name": "日用家纺 / 家电 / 家具类", "covered_categories": ["Home Improvement", "Home Supplies", "Furniture", "Household Appliances", "Kitchenware", "Textiles & Soft Furnishings"], "content_focus": [], "opening_patterns": [], "must_show": [], "recommended_video_types": []},
+    "sports_outdoor": {"name": "运动器械 / 户外类", "covered_categories": ["Sports & Outdoor"], "content_focus": [], "opening_patterns": [], "must_show": [], "recommended_video_types": []},
+    "fashion": {"name": "服饰 / 鞋 / 珠宝 / 配饰 / 箱包类", "covered_categories": ["Womenswear & Underwear", "Menswear & Underwear", "Shoes", "Jewelry Accessories & Derivatives", "Fashion Accessories", "Luggage & Bags"], "content_focus": [], "opening_patterns": [], "must_show": [], "recommended_video_types": []},
+    "beauty": {"name": "美妆个护类", "covered_categories": ["Beauty & Personal Care"], "content_focus": [], "opening_patterns": [], "must_show": [], "recommended_video_types": []},
+    "food_daily_pet": {"name": "食品 / 日用品 / 宠物类", "covered_categories": ["Pet Supplies", "Food & Beverages"], "content_focus": [], "food_must_show": [], "pet_must_show": [], "recommended_video_types": []}
+  }
+}
