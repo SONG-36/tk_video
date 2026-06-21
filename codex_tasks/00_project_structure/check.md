@@ -11,6 +11,12 @@
 
 - [ ] 九个顶层目录及其 README 存在。
 - [ ] `frontend/pages`、`frontend/components`、`frontend/types`、`backend/app`、`backend/schemas`、`backend/tests`、`docs/rules`、`docs/examples` 的职责 README 存在。
+- [ ] `docs/rules/` 存在。
+- [ ] `docs/examples/` 存在。
+- [ ] `docs/99_design_issues.md` 存在。
+- [ ] 不存在 `docs/04_rules/`。
+- [ ] 不存在 `docs/07_examples/`。
+- [ ] 不存在 `docs/99_summary.md`。
 - [ ] 八个 `data/` 子目录及 `outputs/` 均有 `.gitkeep`。
 - [ ] 四个 `scripts/*.py` 占位文件存在。
 - [ ] `.vscode/tasks.json` 存在且只有规定的四个任务入口。
@@ -19,6 +25,7 @@
 ## 内容是否符合 00_design.md
 
 - [ ] 目录职责与第 1—3、17、18、22—24 章一致。
+- [ ] `00_design.md` 不再把 `docs/04_rules/`、`docs/07_examples/` 或 `docs/99_summary.md` 作为当前结构或兼容入口。
 - [ ] README 中的业务链路与第 4 章顺序一致。
 - [ ] `data/` 与 `outputs/` 的职责和路径未被改写。
 - [ ] 脚本明确为占位，没有暗示已完成业务能力。

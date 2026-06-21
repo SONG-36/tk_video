@@ -6,7 +6,9 @@
 
 `00_design.md` 是本项目唯一权威总设计文档。本文档必须能够单独说明产品定位、业务对象、主流程、页面、规则、数据结构、输出规范和验收边界。
 
-`docs/` 是从 `00_design.md` 拆分出来的阅读版；`codex_tasks/` 是从 `00_design.md` 拆分出来的执行指令目录。两者都不能覆盖或替代本文档中的业务定义。
+`docs/` 是从 `00_design.md` 拆分出来的阅读版，不是新的权威源；`codex_tasks/` 是从 `00_design.md` 拆分出来的执行指令目录。两者都不能覆盖或替代本文档中的业务定义。
+
+`docs/rules/` 存放规则阅读版 Markdown，根目录 `rules/` 存放机器可读 JSON 规则；`docs/examples/` 存放案例阅读版；`docs/99_design_issues.md` 只记录设计问题，不是业务规则文档。以上内容均从属于 `00_design.md`。
 
 如果 `00_design.md` 与 `docs/`、`codex_tasks/`、`00_MASTER_DESIGN.md` 或任何实现冲突，以 `00_design.md` 为准。任何新需求、新流程、新规则必须先修改 `00_design.md`，再同步 `docs/` 和 `codex_tasks/`。Codex 执行任何文档修改或实现任务前，必须先读取 `00_design.md`。
 
@@ -616,7 +618,7 @@ platform_category 已确认
 
 #### 页面规则与通过条件
 
-材料分组、检查等级、示例和通过条件统一维护在 [材料检查规则阅读版](docs/04_rules/04_material_check_rules.md)。页面按规则结果展示必须、建议、风险和缺失项，并控制流程闸门。
+材料分组、检查等级、示例和通过条件统一维护在 [材料检查规则阅读版](docs/rules/04_material_check_rules.md)。页面按规则结果展示必须、建议、风险和缺失项，并控制流程闸门。
 
 ### 型号级产品图片资产页
 
@@ -642,7 +644,7 @@ motion_reference         运镜/动作参考视频
 
 #### 页面规则与通过条件
 
-图片最低要求、完整度、资产字段、镜头绑定和通过条件统一维护在 [产品图片资产规则阅读版](docs/04_rules/05_image_asset_rules.md)。页面负责上传、标注、缺图提示和能力降级提示。
+图片最低要求、完整度、资产字段、镜头绑定和通过条件统一维护在 [产品图片资产规则阅读版](docs/rules/05_image_asset_rules.md)。页面负责上传、标注、缺图提示和能力降级提示。
 
 ### 创意方向设定页
 
@@ -758,7 +760,7 @@ motion_reference         运镜/动作参考视频
 
 ---
 
-创意翻译、优先级和禁止事项统一维护在 [创意翻译规则阅读版](docs/04_rules/06_creative_translation_rules.md)。
+创意翻译、优先级和禁止事项统一维护在 [创意翻译规则阅读版](docs/rules/06_creative_translation_rules.md)。
 
 ### 型号级视频批次规划页
 
@@ -861,7 +863,7 @@ video_03：测评对比型
 
 ---
 
-批次生成等级、数量限制和结构化输出统一维护在 [视频批次与镜头规划规则阅读版](docs/04_rules/07_video_batch_and_shot_rules.md)。
+批次生成等级、数量限制和结构化输出统一维护在 [视频批次规划规则阅读版](docs/rules/07_video_batch_rules.md)。
 
 ### 镜头资产规划页
 
@@ -958,7 +960,7 @@ Shot 05：前后对比
 
 ---
 
-镜头数量、镜头卡和提示词字段统一维护在 [视频批次与镜头规划规则阅读版](docs/04_rules/07_video_batch_and_shot_rules.md)。
+镜头数量、镜头卡和提示词字段统一维护在 [镜头资产规划规则阅读版](docs/rules/08_shot_planning_rules.md)。
 
 ### Codex 任务包导出页
 
@@ -3758,17 +3760,24 @@ variant_id：sku_001
 拆分原则：
 
 - `00_design.md` 是主文档和唯一权威源。
+- `docs/` 是从 `00_design.md` 拆分的阅读版，不是新的权威源。
 - `docs/00_overview.md` 是系统总览阅读版。
 - `docs/01_product_flow.md` 是流程阅读版。
 - `docs/02_variant_sku_flow.md` 是型号 / SKU 规则阅读版。
 - `docs/03_page_design.md` 是页面设计阅读版。
-- `docs/04_rules/` 是规则库阅读版。
+- `docs/04_state_machine.md` 是状态机阅读版。
 - `docs/05_data_structures.md` 是数据结构阅读版。
 - `docs/06_codex_task_package.md` 是 Codex 任务包阅读版。
-- `docs/07_examples/` 是案例阅读版。
-- `docs/99_summary.md` 是总结阅读版。
+- `docs/07_output_spec.md` 是输出规范阅读版。
+- `docs/08_quality_control.md` 是质量控制阅读版。
+- `docs/09_development_plan.md` 是项目开发阶段阅读版。
+- `docs/rules/` 是规则阅读版 Markdown 目录；根目录 `rules/` 是机器可读 JSON 规则目录。
+- `docs/examples/` 是案例阅读版目录。
+- `docs/99_design_issues.md` 是设计问题记录，不是业务规则文档。
 
-如果 `docs/` 和 `00_design.md` 冲突，以 `00_design.md` 为准。任何变更必须先写入 `00_design.md`，确认后再同步对应阅读版。旧编号路径保留为兼容入口，但不再承载独立正文，避免形成第二套内容。
+如果 `docs/` 和 `00_design.md` 冲突，以 `00_design.md` 为准。任何变更必须先写入 `00_design.md`，确认后再同步对应阅读版。
+
+本项目不再使用旧编号路径 `docs/04_rules/` 与 `docs/07_examples/`。规则阅读版统一放在 `docs/rules/`，案例阅读版统一放在 `docs/examples/`。旧路径不作为兼容入口保留，旧汇总文档 `docs/99_summary.md` 也不再使用。
 
 ## 23. codex_tasks/ 执行规则
 

@@ -36,3 +36,20 @@
 4. 第 18 章未给出独立 `judgement_report`、`material_check`、`codex_task_package` 完整结构，而页面、导出文件和本次 Schema 清单要求这些对象。
 5. 第 7、17 章导出示例的报告、图片和画板文件名只含 `product_series_id`，未体现当前 `variant_id`；与“参数、图片、配件和限制只能来自目标型号”的绑定要求之间需要实现层明确元数据校验。
 6. 第 9 章称“材料检查未通过不能进入图片检查”，第 12 章允许建议材料缺失经确认、风险材料缺失写入禁止编造后通过；实现需把“通过”解释为该分级规则的结果，而非材料全部齐全。
+
+## 任务执行阻断记录
+
+### 2026-06-21：任务 00 项目结构检查与补齐
+
+- `codex_tasks/00_project_structure/task.md` 将 `docs/rules/README.md` 和 `docs/examples/README.md` 列为当前结构中的允许文件。
+- `00_design.md` 第 22 章定义的规则和案例阅读版路径分别是 `docs/04_rules/` 与 `docs/07_examples/`，并要求旧编号路径作为兼容入口保留。
+- 当前项目使用 `docs/rules/` 与 `docs/examples/`，且没有第 22 章所述兼容入口，因此施工单路径与唯一权威源尚未统一。
+- 按任务 00 的“发生冲突立即停止”要求，本次未继续修改 README、`.gitkeep`、脚本或 VSCode 配置；需先由人工决定并更新 `00_design.md` 或调整施工单，随后重新执行任务 00。
+
+### 2026-06-21：00A_design_path_sync 处理记录
+
+- 本次阻断原因为 `00_design.md` 第 22 章仍保留旧 docs 路径定义。
+- 人工决策采用 `docs/rules/` 与 `docs/examples/` 作为正式路径，`docs/99_design_issues.md` 作为设计问题记录。
+- 旧路径 `docs/04_rules/`、`docs/07_examples/` 与 `docs/99_summary.md` 不保留，也不作为兼容入口。
+- 已同步 `00_design.md` 的规则链接、docs 拆分说明以及任务 00 的施工单和验收单。
+- 路径权威冲突已解除，后续可以重新执行任务 00。

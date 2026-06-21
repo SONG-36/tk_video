@@ -4,4 +4,4 @@
 
 本目录不保存最终生成内容，不充当数据库，也不得混用不同型号的数据。
 
-未来数据文件应接受 JSON Schema 校验，并明确携带适用的 `product_series_id`、`variant_id`、`batch_id`。
+未来数据文件应接受 JSON Schema 校验，并明确携带适用的 `product_series_id`、`variant_id`、`batch_id`。数据目录和对象归属始终服从根目录 `00_design.md`。

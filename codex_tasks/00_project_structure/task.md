@@ -30,12 +30,15 @@
 
 允许创建缺失目录，但不能创建新的业务模块、页面、任务目录或第二套设计目录。
 
+`docs/` 下允许创建和检查的正式路径只使用 `docs/rules/`、`docs/examples/` 与 `docs/99_design_issues.md`，不得使用旧编号路径。
+
 ## 禁止修改的目录和文件
 
 - 禁止修改、移动、重命名或删除 `00_design.md`。
 - 禁止修改 `docs/` 的业务正文、`rules/*.json`、`backend/schemas/*.json`。
 - 禁止修改 `frontend/pages/*/README.md` 和 `backend/app/*/README.md` 的业务内容；它们由后续任务负责。
 - 禁止修改任何现有 `codex_tasks/*/task.md`、`check.md`。
+- 禁止创建 `docs/04_rules/`、`docs/07_examples/` 或 `docs/99_summary.md`；这些旧路径不作为兼容入口保留。
 - 禁止创建前后端源码、数据库文件、API、登录、外部模型调用或真实输出。
 - 禁止在 `data/` 写样例业务数据，在 `outputs/` 写生成资产。
 
