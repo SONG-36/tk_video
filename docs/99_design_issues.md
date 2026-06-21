@@ -1,6 +1,10 @@
 # 设计问题记录
 
-> 本文档来源于 `00_design.md`，仅用于阅读，不是权威源。本文仅记录核对问题，不修改业务规则；处理结论必须先回写 `00_design.md`。
+> 本文档来源于 `00_design.md`，仅用于阅读，不是权威源；如与 `00_design.md` 冲突，以 `00_design.md` 为准。
+>
+> 来源章节：对第 1—24 章的设计一致性检查。
+>
+> 本文只记录问题，不修改业务规则；处理结论必须先回写 `00_design.md`。
 
 ## 重复章节或内容
 
@@ -8,6 +12,7 @@
 2. 第 7 章与第 12—16 章重复描述材料检查、图片资产、创意方向、视频批次和镜头规划的页面目标、字段或通过条件；部分重复是“页面摘要 + 规则正文”的组织方式，但同步时存在漂移风险。
 3. 第 15 章“批量生成原则”和“视频生成等级”下重复出现默认 3 条、`1A_1B_1C`、最多 5 条、素材充足 `2A_2B_1C` 及不足时限制五条精修的规则。
 4. 第 17 章任务包模板与同章统一输出目录重复描述输出结构；第 19 章与第 17 章重复描述输出必填内容。
+5. 第 15、16 章规定 B 级只输出中度资产、C 级只输出轻量草案，但第 19 章“每条视频必须包含”列表要求 Creative Board、完整镜头卡和镜头级提示词；不同生成等级与统一验收清单的适用关系未完全说明。
 
 ## 命名不一致
 
@@ -23,10 +28,12 @@
 3. 第 17 章旧 VSCode 示例包含 `validate-product-flow` 和带 `productId` 参数的导出命令，与本次规定的四个任务入口不同。
 4. 第 20 章导出示例的镜头计划名为 `p_001_shot_plan.json`，第 7、17 章为 `p_001_batch_001_shot_plan.json`，前者缺少批次标识。
 
-## 无效或缺失的 docs 路径
+## 已处理的 docs 路径问题
 
-1. 第 7 章引用 `docs/04_rules/04_material_check_rules.md`、`05_image_asset_rules.md`、`06_creative_translation_rules.md` 和 `07_video_batch_and_shot_rules.md`，当前指定结构使用 `docs/rules/`，且批次与镜头规则拆成两个文件。
-2. 第 22 章仍定义 `docs/04_rules/`、`docs/07_examples/` 和 `docs/99_summary.md`；本次指定路径为 `docs/rules/`、`docs/examples/`、`docs/99_design_issues.md`，并新增状态机、输出、质量和开发计划文档。
+以下问题曾阻断任务 00，已由 `00A_design_path_sync` 的人工决策处理：
+
+1. 第 7 章曾引用旧 `docs/04_rules/` 路径和合并的批次/镜头规则文件；现已使用 `docs/rules/` 并拆分批次与镜头阅读版。
+2. 第 22 章曾定义 `docs/04_rules/`、`docs/07_examples/` 和 `docs/99_summary.md`；现已统一为 `docs/rules/`、`docs/examples/`、`docs/99_design_issues.md`，旧路径不保留。
 
 ## 数据结构与页面流程未完全对齐
 

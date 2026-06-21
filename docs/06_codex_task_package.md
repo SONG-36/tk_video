@@ -1,6 +1,8 @@
 # Codex 任务包
 
-> 本文档来源于 `00_design.md`，仅用于阅读，不是权威源。来源：第 17 章；冲突时以 `00_design.md` 为准。
+> 本文档来源于 `00_design.md`，仅用于阅读，不是权威源；如与 `00_design.md` 冲突，以 `00_design.md` 为准。
+>
+> 来源章节：第 17 章。
 
 ## 型号绑定要求
 
@@ -8,7 +10,18 @@
 
 ## 导出文件
 
-任务包聚合 `data/products/`、`reports/`、`image_assets/`、`creative_boards/`、`video_batches/` 和 `shot_plans/` 的对应数据，并输出：
+任务包聚合以下对应数据：
+
+```text
+data/products/p_001_product.json
+data/reports/p_001_judgement_report.md
+data/image_assets/p_001_image_assets.json
+data/creative_boards/p_001_creative_board.md
+data/video_batches/p_001_batch_001_video_batch_plan.json
+data/shot_plans/p_001_batch_001_shot_plan.json
+```
+
+通用任务文件输出为：
 
 ```text
 data/tasks/{product_series_id}_{variant_id}_{batch_id}_codex_task.md
@@ -70,6 +83,8 @@ outputs/{product_series_id}/{batch_id}/
 
 逐视频输出方向、目标、画板、脚本、故事板、镜头资产、图片输入、剪辑、质检、缺失素材、风险和变量；逐镜头输出第 16、19 章规定字段。
 ````
+
+JSON 任务包使用同一业务内容，并必须在顶层明确携带 `product_series_id`、`variant_id`、`batch_id`。参数、图片、配件和限制只能来自该目标型号。
 
 ## 输出目录
 
