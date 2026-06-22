@@ -15,15 +15,39 @@ body {
 }
 
 .app-shell {
-  display: grid;
   min-height: 100vh;
-  place-content: center;
-  gap: 0.75rem;
   padding: 2rem;
-  text-align: center;
 }
 
-.app-shell h1,
-.app-shell p {
+.page-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.page-navigation a {
+  color: #1d4ed8;
+}
+
+.page-navigation a[aria-current='page'] {
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.route-content {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #cbd5e1;
+}
+
+.route-placeholder {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.route-placeholder h1,
+.route-placeholder p {
   margin: 0;
 }
