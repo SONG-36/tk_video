@@ -21,6 +21,9 @@
 - 表达强度、真人限制、重点卖点、自由想法和禁止事项。
 - 创意优先级。
 - 系统翻译后的运镜、质感、节奏、光线和素材需求。
+- hook 偏好、TikTok 原生风格要求、是否使用爆款模式。
+- `viral_pattern_card` 选择、`product_adapted_pattern` 生成结果。
+- 跨文化适配提醒和产品适配提醒，明确可迁移结构与不可复制内容。
 
 ## 用户动作
 
@@ -43,6 +46,7 @@
 - `product_profile.schema.json`
 - `image_asset.schema.json`
 - `product_series.schema.json`
+- `tiktok_creative_style_rules.json`、`viral_pattern_rules.json`、`creative_transfer_rules.json`（页面规则依赖，不是前端自创字段来源）
 
 ## 通过条件
 

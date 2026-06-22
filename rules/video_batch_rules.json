@@ -1,7 +1,7 @@
 {
   "rule_file": "video_batch_rules.json",
   "rule_set": "video_batch_rules",
-  "source_section": "00_design.md 第 15 章‘视频批次规划规则’；关联第 19 章‘输出验收标准’",
+  "source_section": "00_design.md 第 15 章‘视频批次规划规则’；关联第 17、18、21 章",
   "authority": "00_design.md 是唯一权威源",
   "version": "0.1.0",
   "status": "draft",
@@ -67,7 +67,12 @@
       "测试不同卖点",
       "测试不同使用场景",
       "测试不同创意风格",
-      "测试不同用户痛点"
+      "测试不同用户痛点",
+      "测试不同爆款模式",
+      "测试不同情绪触发",
+      "测试不同前 3 秒机制",
+      "测试国内模式本地化适配",
+      "测试剧情强度对转化的影响"
     ],
     "video_configuration_fields": [
       "video_id",
@@ -82,8 +87,28 @@
       "requires_product_image_lock",
       "requires_competitor_assets",
       "estimated_shot_count",
-      "duration"
+      "duration",
+      "hook_type",
+      "first_3_seconds_text",
+      "first_3_seconds_visual",
+      "scroll_stop_reason",
+      "emotional_trigger",
+      "script_structure",
+      "retention_design",
+      "key_message",
+      "proof_point",
+      "cta",
+      "tiktok_native_style",
+      "text_overlay_plan",
+      "sound_or_voiceover_plan",
+      "viral_pattern_ref",
+      "adapted_pattern_ref"
     ],
+    "creative_pattern_constraints": {
+      "related_rule_sets": ["tiktok_creative_style_rules", "viral_pattern_rules", "creative_transfer_rules"],
+      "three_videos_should_not_share_one_first_3_seconds_mechanism": true,
+      "batch_tests_hook_emotion_pattern_and_transfer": true
+    },
     "video_batch_plan_fields": [
       "batch_id",
       "product_series_id",
@@ -107,7 +132,7 @@
   },
   "open_issues": [
     {
-      "issue": "第 15、16 章允许 B 级中度输出和 C 级轻量草案，但第 19 章要求每条视频包含完整 Creative Board、镜头卡和镜头级提示词；不同生成等级如何适用统一验收清单尚未裁决。",
+      "issue": "第 15、16 章允许 B 级中度输出和 C 级轻量草案，但第 21 章要求每条视频包含完整 Creative Board、镜头卡和镜头级提示词；不同生成等级如何适用统一验收清单尚未裁决。",
       "resolution_status": "unresolved",
       "must_not_resolve_in_rule_projection": true
     }

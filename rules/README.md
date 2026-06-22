@@ -6,4 +6,21 @@
 
 每个 JSON 使用统一元数据：`rule_file`、`rule_set`、`source_section`、`authority`、`version`、`status`、`rules`、`open_issues`。当前投影版本为 `0.1.0`，状态统一为 `draft`。
 
+机器规则列表：
+
+- `platform_category_rules.json`
+- `variant_rules.json`
+- `variant_difference_rules.json`
+- `product_classification_rules.json`
+- `video_type_rules.json`
+- `category_playbook_rules.json`
+- `material_check_rules.json`
+- `image_asset_rules.json`
+- `creative_translation_rules.json`
+- `video_batch_rules.json`
+- `shot_planning_rules.json`
+- `tiktok_creative_style_rules.json`
+- `viral_pattern_rules.json`
+- `creative_transfer_rules.json`
+
 新增或修改规则时，必须先更新 `00_design.md`，再同步阅读版和机器投影；未裁决问题只能记录在 `open_issues`，不得在实现层自行决定。

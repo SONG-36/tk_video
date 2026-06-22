@@ -2,7 +2,7 @@
 
 > 本文档来源于 `00_design.md`，仅用于阅读，不是权威源；如与 `00_design.md` 冲突，以 `00_design.md` 为准。
 >
-> 来源章节：第 7 章。
+> 来源章节：第 7、17、18 章。
 
 ## 页面顺序
 
@@ -89,35 +89,38 @@
 ## 11. 创意方向设定页
 
 - 目标：把普通创意语言翻译为运镜、质感、节奏、光线、参考素材和提示词要求。
-- 字段：创意风格、剧情结构、表达强度、真人限制、重点卖点、自由创意输入。
+- 字段：创意风格、剧情结构、表达强度、真人限制、重点卖点、自由创意输入；并支持 `tiktok_creative_structure`、hook 偏好、TikTok 原生风格要求、是否使用爆款模式、`viral_pattern_card` 选择和 `product_adapted_pattern` 结果。
+- 提醒：展示跨文化适配和产品适配风险，区分可迁移结构与不可复制内容；这些能力属于页内输入与约束，不新增主流程页面。
 - 通过条件：至少一个风格和剧情结构；已选强度与真人限制；确认创意优先级；系统完成专业翻译；用户确认。
 - 输出：目标型号的创意方向和系统专业翻译。
 
 ## 12. 型号级视频批次规划页
 
 - 目标：围绕一个目标型号规划 3—5 条用于测试的差异化短视频。
-- 批次目标：测试不同分型、开头钩子、卖点、场景、创意风格或用户痛点。
-- 每条字段：`video_id`、分型、创意风格、主卖点、场景、痛点、生成等级、提示词开关、真人/原图锁定/竞品素材需求、镜头数、时长。
+- 批次目标：测试不同分型、开头钩子、卖点、场景、创意风格、用户痛点、爆款模式、情绪触发、前 3 秒机制或本地化迁移方式。
+- 每条字段：原有字段外，增加或预留 `hook_type`、`first_3_seconds_text`、`first_3_seconds_visual`、`scroll_stop_reason`、`emotional_trigger`、`script_structure`、`retention_design`、`key_message`、`proof_point`、`cta`、`tiktok_native_style`、`text_overlay_plan`、`sound_or_voiceover_plan`、`viral_pattern_ref`、`adapted_pattern_ref`。
+- 批次约束：同一批次内不应让 3 条视频使用同一种前 3 秒机制。
 - 通过条件：批次 ID 和数量已确认；逐视频必填项完整；图片支撑等级；不满足条件者不能进入 A 级；用户确认批次。
 - 输出：绑定三类 ID 的 `video_batch_plan`。
 
 ## 13. 镜头资产规划页
 
 - 目标：把批次视频拆成可执行镜头资产。
-- 资产：每条视频一个 Creative Board、一个 Storyboard；每个镜头一个 Shot Card 和一个 Seedance Prompt。
+- 资产：每条视频一个 Creative Board、一个 Storyboard；每个镜头一个 Shot Card 和一个 Seedance Prompt；使用爆款模式时，把 `viral_pattern_card` / `product_adapted_pattern` 转成镜头而非只保留概念。
+- 逐镜头补充：情绪触发、反转推进、产品证明、剧情铺垫角色、产品首次出现时间、产品证明开始时间、剧情/产品平衡、证明场景、CTA 画面、字幕和声音计划。
 - 通过条件：A/B/C 视频分别达到第 16 章要求；镜头绑定图片或标记不需要；标记失真风险；明确服务的卖点或剧情目标。
 - 输出：批次级 `shot_asset_plan`。
 
 ## 14. Codex 任务包导出页
 
 - 目标：将前序结果整理为标准任务包；前端不直接调用 Codex 插件，只生成文件。
-- 输出：商品、报告、图片、创意、批次、镜头计划及 `{product_series_id}_{variant_id}_{batch_id}_codex_task.{md,json}`。
+- 输出：商品、报告、图片、创意、批次、镜头计划、TikTok 创意结构、爆款模式迁移信息及 `{product_series_id}_{variant_id}_{batch_id}_codex_task.{md,json}`。
 - 通过条件：镜头资产已规划，任务包三类 ID 与目标型号和批次一致。
 
 ## 15. 输出结果查看页
 
 - 目标：读取 Codex 输出并展示脚本、分镜、提示词和拍摄清单。
 - 读取：`outputs/{product_series_id}/{batch_id}/batch_summary.md` 和批次规划中实际存在的视频目录。
-- 展示：创意画板、脚本、故事板、镜头卡、镜头提示词、图片输入计划、剪辑计划、质检、缺失素材。
+- 展示：创意画板、脚本、故事板、镜头卡、镜头提示词、图片输入计划、剪辑计划、质检、缺失素材，以及 hook、proof、CTA、TikTok native style、使用到的 viral pattern、迁移结果和剧情压过产品风险。
 - 动作：查看、复制、标记通过、标记重做、重新导出任务包。
 - 约束：只有素材充足且批次规划存在时才读取 `video_04/05`。

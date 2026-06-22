@@ -14,6 +14,7 @@
 - 已确认的判断报告、材料检查、图片资产和创意方向。
 - 同一三类 ID 的 `video_batch_plan` 与 `shot_asset_plan`。
 - 已有材料、缺失材料和禁止编造清单。
+- TikTok 创意结构、逐视频 hook/proof/CTA、`viral_pattern_card`、`product_adapted_pattern` 和创意迁移约束。
 
 ## 输出
 
@@ -28,7 +29,7 @@ data/tasks/{product_series_id}_{variant_id}_{batch_id}_codex_task.json
 
 ## 依赖规则
 
-`rules/material_check_rules.json`、`rules/image_asset_rules.json`、`rules/creative_translation_rules.json`、`rules/video_batch_rules.json`、`rules/shot_planning_rules.json`。规则文件是机器可读投影，不能覆盖 `00_design.md`。
+`rules/material_check_rules.json`、`rules/image_asset_rules.json`、`rules/creative_translation_rules.json`、`rules/video_batch_rules.json`、`rules/shot_planning_rules.json`、`rules/tiktok_creative_style_rules.json`、`rules/viral_pattern_rules.json`、`rules/creative_transfer_rules.json`。规则文件是机器可读投影，不能覆盖 `00_design.md`。
 
 ## 依赖 Schema
 
@@ -64,7 +65,8 @@ data/tasks/{product_series_id}_{variant_id}_{batch_id}_codex_task.json
 - 不混入其他型号数据，不编造缺失信息。
 - 不绕过判断、材料、图片、创意、批次或镜头审核闸门。
 - 不创建数据库、API 路由或外部模型客户端。
+- 任务包只能让 Codex 参考模式、情绪和节奏，不得复制来源人物、台词、画面、音乐、品牌或剧情细节。
 
 ## 后续实现边界
 
-未来只在人工确认设计未裁决约束后实现本地聚合、validators 校验、模板渲染和任务包文件生成。第 15、16 章 B/C 级与第 19 章完整资产要求的关系不得由本模块自行裁决。
+未来只在人工确认设计未裁决约束后实现本地聚合、validators 校验、模板渲染和任务包文件生成。第 15、16 章 B/C 级与第 21 章完整资产要求的关系不得由本模块自行裁决。

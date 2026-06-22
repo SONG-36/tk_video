@@ -197,6 +197,8 @@ Variant / SKU 型号
 ├── 视频分型规则
 ├── 类目打法规则
 ├── 创意翻译规则
+├── TikTok 原生短视频创意结构规则
+├── 爆款素材库与创意迁移规则
 ├── 视频批次规划规则
 ├── 镜头规划规则
 ├── 图片资产规则
@@ -2531,7 +2533,1265 @@ Shot 05：前后对比
 
 ---
 
-## 17. Codex 任务包规则
+## 17. TikTok 原生短视频创意结构规则
+
+> 本章负责什么：定义 TikTok 商品短视频的前 3 秒钩子、内容节奏、原生风格、字幕/声音、结尾转化和 Codex 输出约束。本章不改变现有主流程，只作为创意方向、视频批次规划、镜头资产规划和 Codex 任务包的上游约束。
+
+### 设计背景
+
+TikTok 商品短视频不是传统广告片，也不是普通产品说明书。短视频环境下，用户以快速滑动、快速判断、快速放弃为默认行为。系统生成任何脚本、故事板、镜头卡和提示词时，都必须优先解决以下问题：
+
+```text
+前 3 秒为什么不被划走
+中段为什么继续看
+产品卖点如何被证明
+结尾为什么产生点击或购买动作
+整条视频是否像 TikTok 原生内容，而不是传统电商广告
+```
+
+因此，Codex 生成内容时不能只完成“有脚本、有镜头、有提示词”，还必须完成“有钩子、有节奏、有证明、有转化、有平台原生感”。
+
+### 基础结构：Hook → Problem → Product → Proof → CTA
+
+每条视频都必须遵守短视频基础结构：
+
+```text
+Hook：前 0—3 秒截停用户
+Problem：放大用户痛点或制造场景冲突
+Product：让产品自然进入场景
+Proof：用画面证明卖点，而不是只用文字解释
+CTA：结尾给出清晰行动指令
+```
+
+不同视频分型可以调整顺序和表达方式，但不能完全缺失 Hook、Proof 和 CTA。
+
+### 时间段规则
+
+#### 0—3 秒：前 3 秒钩子
+
+目标：让用户停止滑动。
+
+必须完成至少一件事：
+
+```text
+直接指出痛点
+展示强结果
+制造反差
+抛出问题
+点名目标人群
+展示失败瞬间
+展示异常场景
+展示强视觉变化
+```
+
+禁止事项：
+
+```text
+不要品牌自我介绍
+不要慢慢展示产品外观
+不要说“今天给大家介绍一款……”
+不要用空泛形容词开场
+不要先铺垫公司、工厂、参数
+不要把产品卖点藏到 5 秒以后
+```
+
+前 3 秒必须同时写清：
+
+```text
+first_3_seconds_text：前 3 秒字幕或口播
+first_3_seconds_visual：前 3 秒画面
+scroll_stop_reason：为什么能截停用户
+product_relevance：这个钩子和产品有什么关系
+```
+
+#### 3—8 秒：痛点放大或冲突建立
+
+目标：让用户觉得“这和我有关”。
+
+可用方式：
+
+```text
+展示普通方法失败
+展示使用前的麻烦
+展示用户熟悉的尴尬场景
+展示对比对象的问题
+展示错误做法和后果
+```
+
+本段不能只是继续重复钩子，必须把用户带入具体场景。
+
+#### 8—18 秒：产品解决方案与卖点证明
+
+目标：让产品进入，并证明它为什么有用。
+
+必须至少完成：
+
+```text
+产品清晰出现
+核心卖点被画面证明
+产品动作、效果或细节可见
+字幕或口播解释用户正在看到什么
+```
+
+禁止只说不演示。能用画面证明的卖点，不能只用文案描述。
+
+#### 18—25 秒：结果展示与信任补强
+
+目标：让用户相信结果。
+
+常用方式：
+
+```text
+前后对比
+细节特写
+使用结果定格
+用户反应
+参数或材料补充
+真实场景收束
+```
+
+如果缺少真实参数，必须使用占位符，不得编造具体数值。
+
+#### 结尾 2—3 秒：CTA
+
+目标：让用户知道下一步做什么。
+
+CTA 不能只是“Buy now”这种生硬口号，必须和场景、痛点或结果相关。
+
+CTA 类型包括：
+
+```text
+点击商品卡
+查看详情
+评论提问
+收藏备用
+对比后选择
+限时优惠提醒
+适用人群点名
+场景总结式行动
+```
+
+示例：
+
+```text
+If your car seat gap looks like this, check the product card before your next car clean.
+```
+
+### Hook 类型库
+
+每条视频必须选择至少 1 种 hook_type。
+
+#### 痛点直击型 pain_point_direct
+
+适用：清洁工具、家居用品、美妆个护、宠物用品、车载用品。
+
+结构：
+
+```text
+你是不是也遇到过这个具体问题？
+```
+
+示例：
+
+```text
+Your car seat gap is hiding more dirt than you think.
+```
+
+#### 结果先行型 result_first
+
+适用：前后对比明显、清洁效果明显、美妆效果明显、收纳效果明显的产品。
+
+结构：
+
+```text
+先展示结果，再解释怎么做到。
+```
+
+示例：
+
+```text
+This took 10 seconds to clean.
+```
+
+#### 失败对比型 failed_method
+
+适用：有普通替代方法但效果差的产品。
+
+结构：
+
+```text
+普通方法失败 → 产品方法成功。
+```
+
+示例：
+
+```text
+Tissue? Nope. Brush? Still no.
+```
+
+#### 反常识型 counterintuitive
+
+适用：用户有错误认知、产品方法和常规方法不同的场景。
+
+结构：
+
+```text
+你以为 A，其实 B。
+```
+
+示例：
+
+```text
+The dirtiest part of your car is not the floor mat.
+```
+
+#### 人群点名型 audience_callout
+
+适用：人群明确的产品，如车主、宠物主人、上班族、学生、宝妈、户外人群。
+
+结构：
+
+```text
+If you are [target user], this is for you.
+```
+
+示例：
+
+```text
+If you eat in your car, you need to see this.
+```
+
+#### 场景代入型 scene_entry
+
+适用：强场景产品，如车内、厨房、浴室、卧室、办公室、户外。
+
+结构：
+
+```text
+直接进入具体场景，不解释背景。
+```
+
+示例：
+
+```text
+POV: You finally clean the gap between your car seats.
+```
+
+#### 悬念反转型 suspense_reverse
+
+适用：搞笑反转、剧情型、短剧型内容。
+
+结构：
+
+```text
+制造异常 → 延迟揭示产品解决。
+```
+
+示例：
+
+```text
+I thought this mess was impossible to clean…
+```
+
+#### 测评挑战型 test_challenge
+
+适用：测评对比型、同质化严重、功能可验证产品。
+
+结构：
+
+```text
+让产品接受一个具体测试。
+```
+
+示例：
+
+```text
+Can this tiny vacuum clean the worst seat gap?
+```
+
+#### 价格/优惠型 price_value
+
+适用：价格优势明显、促销期、低客单冲动购买品。
+
+结构：
+
+```text
+用价格降低决策压力，但必须连接实际价值。
+```
+
+示例：
+
+```text
+A small car-cleaning fix that costs less than a lunch.
+```
+
+### TikTok 原生风格判断
+
+系统必须判断每条视频是否具备 TikTok 原生感。
+
+TikTok 原生感包括：
+
+```text
+开头直接进入冲突或结果
+语气像朋友推荐，不像品牌硬广
+画面有真实使用感，不像棚拍广告
+字幕短、狠、口语化
+产品自然进入场景
+镜头节奏快但不混乱
+允许轻微生活化瑕疵，但不能影响产品识别
+声音、音乐或口播服务节奏
+结尾 CTA 自然，不像电视购物
+```
+
+非原生风险包括：
+
+```text
+长时间品牌 logo 开场
+慢速产品旋转展示
+大段参数堆叠
+棚拍感过强但缺少使用场景
+字幕像说明书
+口播像培训课
+结尾只有品牌口号没有行动指令
+```
+
+如果视频不具备 TikTok 原生感，系统必须提示调整：
+
+```text
+改强前 3 秒钩子
+减少品牌式铺垫
+增加真实使用场景
+增加结果或对比
+缩短字幕
+强化 CTA
+```
+
+### 字幕与文字叠加规则
+
+字幕不是装饰，而是快速传递信息的工具。
+
+规则：
+
+```text
+前 3 秒必须有字幕或强画面信息
+字幕必须口语化、短句化
+每屏字幕只表达一个意思
+关键卖点优先放在动作发生时
+不要整段堆满屏幕
+不要用复杂书面语
+不要遮挡产品主体
+```
+
+字幕类型：
+
+```text
+痛点字幕
+动作解释字幕
+卖点证明字幕
+前后对比字幕
+风险提醒字幕
+CTA 字幕
+```
+
+每条视频必须生成 `text_overlay_plan`，说明每个关键时间段使用什么字幕。
+
+### 声音、音乐与口播规则
+
+TikTok 视频不能只考虑画面。系统必须为每条视频规划声音或口播策略。
+
+声音类型：
+
+```text
+原生口播
+旁白解释
+环境音
+动作音效
+节奏音乐
+转场音效
+无口播字幕流
+```
+
+规则：
+
+```text
+声音必须服务视频节奏
+口播不能重复屏幕字幕
+动作音效可以强化爽感和证明感
+音乐不能盖过核心信息
+无口播视频必须靠字幕和画面讲清楚
+```
+
+每条视频必须生成 `sound_or_voiceover_plan`。
+
+### 中段留人规则
+
+中段不能只是产品说明，必须设计留人点。
+
+可用留人方式：
+
+```text
+每 2—4 秒出现视觉变化
+从失败方法切到产品方法
+从脏乱状态切到清洁过程
+从局部特写切到结果对比
+用字幕提示“wait for the result”
+让产品动作逐步证明卖点
+保留一个结果悬念到后半段
+```
+
+每条视频必须生成 `retention_design`，说明中段如何避免用户划走。
+
+### 结尾 CTA 规则
+
+结尾必须服务转化，但不能粗暴硬喊。
+
+CTA 必须满足：
+
+```text
+和前面痛点相关
+和展示结果相关
+清楚告诉用户下一步
+不编造优惠、库存或销量
+不夸大效果
+```
+
+CTA 类型：
+
+```text
+product_card_click：点击商品卡
+comment_question：评论提问
+save_for_later：收藏备用
+compare_before_buy：对比后选择
+limited_offer：限时优惠提醒
+scenario_action：场景行动建议
+```
+
+### 视频分型对应结构
+
+#### 生活场景型
+
+推荐结构：
+
+```text
+0—3 秒：场景痛点或异常画面
+3—8 秒：真实使用麻烦
+8—18 秒：产品进入并解决问题
+18—25 秒：结果展示 + 场景总结 CTA
+```
+
+#### 卖点讲解型
+
+推荐结构：
+
+```text
+0—3 秒：强卖点或痛点问题
+3—8 秒：展示产品核心功能
+8—18 秒：连续证明 2—3 个卖点
+18—25 秒：适用人群 + CTA
+```
+
+#### 开箱直拍型
+
+推荐结构：
+
+```text
+0—3 秒：开箱结果或包装亮点
+3—8 秒：快速展示包装和配件
+8—18 秒：产品细节与使用价值
+18—25 秒：适合谁买 + CTA
+```
+
+注意：如果商品核心价值来自使用效果，开箱不能作为主力结构。
+
+#### 买家卖家秀型
+
+推荐结构：
+
+```text
+0—3 秒：真人效果或前后差异
+3—8 秒：使用前状态或痛点
+8—18 秒：使用过程和关键步骤
+18—25 秒：效果展示 + 真实感受 + CTA
+```
+
+#### 测评对比型
+
+推荐结构：
+
+```text
+0—3 秒：测试挑战或结果悬念
+3—8 秒：展示对比对象和测试标准
+8—18 秒：产品对比过程
+18—25 秒：结果结论 + 购买建议 CTA
+```
+
+### 类目钩子偏好
+
+#### 车载用品
+
+优先钩子：
+
+```text
+痛点直击型
+失败对比型
+场景代入型
+测评挑战型
+反常识型
+```
+
+优先画面：
+
+```text
+车内缝隙
+脚垫灰尘
+杯架脏污
+后备箱碎屑
+清洁前后对比
+```
+
+#### 美妆个护
+
+优先钩子：
+
+```text
+结果先行型
+前后对比型
+人群点名型
+步骤教程型
+场景代入型
+```
+
+优先画面：
+
+```text
+真人使用前后
+局部效果特写
+步骤演示
+时间节省
+防烫或安全细节
+```
+
+#### 家居/小家电
+
+优先钩子：
+
+```text
+痛点直击型
+结果先行型
+生活场景型
+反常识型
+省时间型
+```
+
+优先画面：
+
+```text
+真实家庭场景
+使用前后
+收纳变化
+功能动作
+细节证明
+```
+
+#### 宠物用品
+
+优先钩子：
+
+```text
+宠物真实反应型
+场景代入型
+安全材质型
+耐用测试型
+情绪价值型
+```
+
+优先画面：
+
+```text
+宠物互动
+宠物使用反应
+安全细节
+耐咬耐用
+清洁便利
+```
+
+### Codex 输出强制字段
+
+从本章加入后，Codex 生成每条视频内容资产时，必须为每条视频输出以下字段：
+
+```json
+{
+  "hook": {
+    "hook_type": "pain_point_direct",
+    "first_3_seconds_text": "Your car seat gap is hiding more dirt than you think.",
+    "first_3_seconds_visual": "Macro push-in shot into a dirty car seat gap.",
+    "scroll_stop_reason": "Hidden dirt creates curiosity and discomfort.",
+    "product_relevance": "The hook directly leads to a car vacuum cleaning solution."
+  },
+  "script_structure": {
+    "0_3s": "Hook / pain point",
+    "3_8s": "Failed ordinary method",
+    "8_18s": "Product solution demonstration",
+    "18_25s": "Before/after proof",
+    "final_2_3s": "CTA"
+  },
+  "retention_design": {
+    "pattern_interrupts": [
+      "fast push-in",
+      "failed tissue gag",
+      "hero product reveal"
+    ],
+    "visual_changes": [
+      "macro dirt",
+      "hand action",
+      "product close-up",
+      "split-screen before/after"
+    ]
+  },
+  "key_message": "This small vacuum reaches the dirty gaps your hand cannot clean.",
+  "proof_point": "Show crumbs being removed from the seat gap and dust collected in the container.",
+  "cta": {
+    "cta_type": "product_card_click",
+    "cta_text": "Check the product card before your next car clean.",
+    "cta_visual": "Clean seat gap and product held in hand."
+  },
+  "tiktok_native_style": {
+    "style": "UGC demo",
+    "tone": "friend recommendation",
+    "avoid": [
+      "TV commercial tone",
+      "long brand intro",
+      "slow product beauty shot"
+    ]
+  },
+  "text_overlay_plan": [
+    {
+      "time": "0-3s",
+      "text": "Your seat gap is hiding this?"
+    },
+    {
+      "time": "8-18s",
+      "text": "Gets where your hand can’t."
+    }
+  ],
+  "sound_or_voiceover_plan": {
+    "type": "voiceover + action sound",
+    "notes": "Use short spoken lines and emphasize suction sound during proof shots."
+  }
+}
+```
+
+如果某条视频缺少 hook、proof_point 或 CTA，不能视为完整视频资产。
+
+### 与现有模块的关系
+
+本章约束以下模块：
+
+```text
+创意方向设定
+视频批次规划
+镜头资产规划
+Codex 任务包导出
+Codex 输出验收
+```
+
+本章不新增主流程页面。它作为规则层进入：
+
+```text
+creative_direction
+video_batch_plan
+shot_asset_plan
+codex_task_package
+output_quality_check
+```
+
+后续需要同步更新：
+
+```text
+docs/rules/09_tiktok_creative_style_rules.md
+rules/tiktok_creative_style_rules.json
+backend/schemas/creative_direction.schema.json
+backend/schemas/video_batch_plan.schema.json
+backend/schemas/shot_asset_plan.schema.json
+backend/schemas/codex_task_package.schema.json
+codex_tasks_code/12_frontend_page_forms
+codex_tasks_code/15_task_package_export_impl
+codex_tasks_code/17_sample_product_run
+```
+
+### 禁止事项
+
+```text
+不要把 TikTok 视频写成传统广告片
+不要用品牌介绍占据前 3 秒
+不要用“今天介绍一款产品”作为钩子
+不要让每条视频都是同一种钩子
+不要只有脚本，没有证明画面
+不要只有产品外观，没有使用场景
+不要只有结尾口号，没有行动指令
+不要为了剧情牺牲产品清晰度
+不要为了电影感牺牲平台原生感
+不要编造优惠、库存、销量、参数或认证
+```
+
+### 通过条件
+
+生成每条视频前必须确认：
+
+```text
+已选择 hook_type
+已写明 first_3_seconds_text
+已写明 first_3_seconds_visual
+已说明 scroll_stop_reason
+已说明产品和钩子的关联
+已完成 0—3 / 3—8 / 8—18 / 18—25 / final CTA 结构
+已写明 key_message
+已写明 proof_point
+已写明 retention_design
+已写明 text_overlay_plan
+已写明 sound_or_voiceover_plan
+已写明 cta_type 和 cta_text
+已通过 TikTok 原生风格检查
+未违反产品清晰度和禁止编造规则
+```
+
+如果以上字段缺失，Codex 任务包仍可导出草案，但必须标记为：
+
+```text
+TikTok 创意结构不完整，需要人工补齐后再生成正式视频资产。
+```
+
+## 18. 爆款素材库与创意迁移规则
+
+> 本章负责什么：定义如何把国内外短视频中的高吸引力开头、剧情陷阱、反转结构、爽点、情绪触发和平台原生表达沉淀为可复用素材库，并在不抄袭、不侵权、不脱离商品的前提下迁移到具体商品视频中。本章不新增主流程页面，但新增一套创意素材输入、拆解、适配、验证和淘汰机制。
+
+### 设计背景
+
+短视频平台上的高吸引力内容并不只依赖产品本身。很多内容让用户上头，是因为它利用了人类快速判断、好奇、冲突、反差、羞耻、爽感、身份代入、情绪补偿和结果期待。
+
+这些机制在不同国家和人群之间存在文化差异，但底层触发并不完全分人种。例如：
+
+```text
+霸道总裁爱上我
+穷人逆袭
+误会反转
+身份揭露
+前任后悔
+失败者翻盘
+普通方法失败
+高压场景救急
+尴尬瞬间解除
+低成本解决大麻烦
+```
+
+这些内容不能被系统直接复制成商品广告，但可以被拆解成可迁移的创意模式。
+
+系统必须区分：
+
+```text
+可迁移的是结构、节奏、情绪触发和镜头逻辑
+不可直接迁移的是人物设定、台词、版权元素、具体剧情、原视频画面、品牌素材和创作者表达
+```
+
+### 素材库定位
+
+爆款素材库不是普通收藏夹，也不是“看到什么火就照抄什么”。
+
+它是一个结构化知识库，用于回答：
+
+```text
+这个视频为什么让人停下来
+它的前 3 秒用了什么陷阱
+中段靠什么维持注意力
+结尾靠什么让用户继续互动或转化
+这个模式能不能迁移到当前商品
+迁移后会不会伤害产品清晰度、真实性或合规性
+```
+
+### 素材库对象定义
+
+每条素材必须拆成一个 `viral_pattern_card`。
+
+```json
+{
+  "pattern_id": "vp_001",
+  "source_platform": "Douyin",
+  "source_region": "CN",
+  "source_category": "short_drama",
+  "source_url": "optional_url_or_internal_reference",
+  "pattern_name": "身份反差救场",
+  "original_context_summary": "普通人被轻视，关键时刻用隐藏能力解决问题。",
+  "attention_trigger": [
+    "身份反差",
+    "羞辱场景",
+    "反转期待"
+  ],
+  "first_3_seconds_mechanism": "先让用户看到冲突和不公平，制造继续看反转的动机。",
+  "retention_mechanism": "不断延迟身份揭示，让用户等待翻盘。",
+  "emotional_payload": [
+    "爽感",
+    "代入",
+    "替弱者出气"
+  ],
+  "structure": {
+    "0_3s": "冲突出现",
+    "3_8s": "弱者被压制",
+    "8_18s": "隐藏能力逐步露出",
+    "18_25s": "反转完成",
+    "cta": "引导继续看或行动"
+  },
+  "transferable_elements": [
+    "身份反差结构",
+    "先压后爽节奏",
+    "关键时刻产品救场"
+  ],
+  "non_transferable_elements": [
+    "原剧情人物关系",
+    "原台词",
+    "原视频画面",
+    "具体影视化设定"
+  ],
+  "suitable_product_types": [
+    "清洁工具",
+    "应急工具",
+    "美妆个护",
+    "小家电"
+  ],
+  "risk_flags": [
+    "过度剧情化可能稀释产品",
+    "演技和素材要求较高",
+    "容易变成短剧而不是商品视频"
+  ]
+}
+```
+
+### 创意模式分类
+
+素材库至少包含以下模式分类。
+
+#### 冲突反转类
+
+```text
+误会反转
+身份反差
+弱者翻盘
+普通方法失败后反转
+前任/同事/朋友看不起后反转
+```
+
+适合迁移到：
+
+```text
+解决痛点明显的产品
+效果前后对比强的产品
+应急场景产品
+工具类产品
+美妆效果类产品
+```
+
+#### 爽感释放类
+
+```text
+脏乱瞬间清理
+毛发/灰尘/碎屑被吸走
+乱线被整理
+空间被收纳
+头发从毛躁变顺
+```
+
+适合迁移到：
+
+```text
+清洁工具
+收纳产品
+美妆个护
+宠物清洁
+家居小工具
+```
+
+#### 尴尬救场类
+
+```text
+出门前出问题
+车内突然很脏
+约会前形象混乱
+朋友上车前发现尴尬细节
+宠物弄乱家里
+```
+
+适合迁移到：
+
+```text
+车载用品
+美妆个护
+便携小电器
+应急工具
+除味/清洁/整理类产品
+```
+
+#### 身份代入类
+
+```text
+车主
+上班族
+宝妈
+宠物主人
+精致女生
+户外人群
+租房党
+懒人
+洁癖人群
+```
+
+适合迁移到：
+
+```text
+所有有明确目标人群的商品
+```
+
+#### 低成本解决大麻烦类
+
+```text
+一个小东西解决烦人大问题
+便宜但好用
+小体积大用途
+不用去店里也能解决
+不用专业工具也能搞定
+```
+
+适合迁移到：
+
+```text
+低客单价商品
+冲动购买商品
+小工具
+车载小电器
+家居小电器
+```
+
+#### 测试挑战类
+
+```text
+最脏角落测试
+极限使用测试
+普通工具 vs 本产品
+1 分钟挑战
+盲测对比
+```
+
+适合迁移到：
+
+```text
+功能可验证产品
+同质化严重产品
+需要建立信任的产品
+```
+
+### 素材入库规则
+
+任何爆款素材进入素材库前，必须完成结构化拆解。
+
+禁止只保存：
+
+```text
+视频链接
+截图
+一句话灵感
+“这个很火”
+“这个可以模仿”
+```
+
+必须填写：
+
+```text
+source_platform
+source_region
+source_category
+pattern_name
+原内容一句话概括
+前 3 秒机制
+中段留人机制
+结尾机制
+情绪触发
+可迁移元素
+不可迁移元素
+适合商品类型
+不适合商品类型
+风险标记
+```
+
+### 素材库来源
+
+素材可以来自：
+
+```text
+TikTok 爆款视频
+TikTok Shop 达人带货视频
+Douyin 爆款短视频
+小红书种草视频
+快手剧情视频
+YouTube Shorts
+Instagram Reels
+竞品广告
+达人口播视频
+短剧高热视频
+```
+
+但系统必须记录来源平台和地区，不能默认国内爆款结构直接适配美国市场。
+
+### 跨文化适配规则
+
+国内爆款结构可以作为底层机制参考，但进入 TikTok US 内容前必须做跨文化适配。
+
+必须检查：
+
+```text
+人物关系是否美国用户能理解
+冲突是否过度狗血
+羞辱/阶层/性别表达是否有文化风险
+台词是否自然英语表达
+场景是否符合美国日常生活
+产品出现是否合理
+CTA 是否符合 TikTok Shop 购物路径
+```
+
+禁止：
+
+```text
+直接翻译国产短剧台词
+直接照搬霸总、婆媳、豪门、打脸等设定
+使用明显东方短剧语境但没有本地化解释
+为了狗血牺牲产品展示
+为了情绪强度制造歧视、羞辱或冒犯
+```
+
+允许：
+
+```text
+保留反差结构
+保留误会反转
+保留先压后爽节奏
+保留失败方法 vs 正确方法
+保留“关键时刻产品救场”
+把人物关系改成本地可理解场景
+把狗血剧情降级为生活化冲突
+```
+
+### 产品适配规则
+
+每个爆款模式迁移到具体商品前，必须通过产品适配检查。
+
+检查问题：
+
+```text
+这个模式能否自然引出产品
+产品是否能在 8—18 秒承担解决方案
+是否有画面证明产品效果
+是否需要真人/场景/道具
+是否会让剧情盖过产品
+是否会引发夸大功效
+是否需要额外素材
+是否会导致产品形态失真
+```
+
+如果一个创意模式不能让产品在中段承担解决方案，就不能进入正式视频批次，只能保留为灵感。
+
+### 创意迁移流程
+
+素材库到商品视频必须经过以下步骤：
+
+```text
+选择 viral_pattern_card
+识别 attention_trigger
+提取 transferable_elements
+剔除 non_transferable_elements
+匹配当前 product_profile
+匹配当前 video_type
+匹配当前 image_asset 和 material_check
+生成 product_adapted_pattern
+检查 TikTok native style
+检查产品清晰度和合规风险
+进入 video_batch_plan 或 shot_asset_plan
+```
+
+### 商品适配后的对象
+
+迁移后必须生成 `product_adapted_pattern`。
+
+```json
+{
+  "adapted_pattern_id": "ap_001",
+  "source_pattern_id": "vp_001",
+  "product_series_id": "p_001",
+  "variant_id": "sku_001",
+  "batch_id": "batch_001",
+  "video_id": "video_01",
+  "adapted_concept": "朋友上车前发现座椅缝隙很脏，普通纸巾失败，车载吸尘器救场。",
+  "hook_type": "failed_method",
+  "first_3_seconds_text": "Your friend is about to get in… and your seat gap looks like this?",
+  "first_3_seconds_visual": "Close-up of dirty car seat gap before a passenger enters.",
+  "emotional_trigger": [
+    "尴尬救场",
+    "失败方法",
+    "低成本解决大麻烦"
+  ],
+  "product_role": "关键时刻解决尴尬的工具",
+  "proof_scene": "Show tissue failing, then the vacuum removing debris from the gap.",
+  "cta": "Check the product card before your next ride.",
+  "risk_check": {
+    "product_overpowered_by_plot": false,
+    "needs_actor": "hand_only",
+    "needs_extra_scene": true,
+    "compliance_risk": "low"
+  }
+}
+```
+
+### 与视频批次规划的关系
+
+视频批次规划不应该只测试视频分型，也应该测试创意模式。
+
+一个批次内至少应避免 3 条视频使用同一种开头机制。
+
+示例：
+
+```text
+video_01：生活场景型 + 尴尬救场 + failed_method
+video_02：卖点讲解型 + 低成本解决大麻烦 + pain_point_direct
+video_03：测评对比型 + 极限挑战 + test_challenge
+```
+
+批次目标可以新增：
+
+```text
+测试不同爆款模式
+测试不同情绪触发
+测试不同前 3 秒机制
+测试国内模式本地化适配
+测试剧情强度对转化的影响
+```
+
+### 与镜头资产规划的关系
+
+镜头资产规划必须把爆款模式转成镜头，而不是只保留概念。
+
+每个使用爆款模式的视频，镜头卡必须标明：
+
+```text
+该镜头对应哪个情绪触发
+该镜头是否推进反转
+该镜头是否证明产品
+该镜头是否只是剧情铺垫
+剧情铺垫是否超过必要时长
+产品首次出现时间
+产品证明开始时间
+```
+
+硬规则：
+
+```text
+产品首次清晰出现不能晚于 8 秒
+产品证明不能晚于 12 秒开始
+剧情铺垫不能超过产品证明
+如果剧情强度压过产品，必须降级剧情
+```
+
+### 与 Codex 任务包的关系
+
+Codex 任务包必须携带使用到的 `viral_pattern_card` 和 `product_adapted_pattern`。
+
+任务包中必须告诉 Codex：
+
+```text
+参考的是模式，不是照抄原视频
+保留的是情绪触发和节奏结构
+禁止复制原人物、台词、画面、品牌、剧情细节
+必须让产品承担解决方案
+必须让产品在前 8 秒内清晰出现
+必须在中段用画面证明卖点
+必须在结尾给出 CTA
+```
+
+### 素材库淘汰规则
+
+爆款模式不是永久有效。
+
+以下情况必须标记为低优先级或淘汰：
+
+```text
+同类账号已经大量使用
+观众明显疲劳
+与当前商品弱相关
+需要过高拍摄成本
+文化适配风险高
+平台合规风险高
+剧情强度压过产品
+无法形成产品证明画面
+```
+
+### 知识库目录建议
+
+后续实现中，素材库建议落到以下目录：
+
+```text
+knowledge_base/
+├── viral_patterns/
+│   ├── cn_douyin/
+│   ├── us_tiktok/
+│   ├── xiaohongshu/
+│   └── youtube_shorts/
+├── adapted_patterns/
+├── rejected_patterns/
+└── README.md
+```
+
+机器可读规则后续同步到：
+
+```text
+rules/viral_pattern_rules.json
+rules/creative_transfer_rules.json
+```
+
+阅读版后续同步到：
+
+```text
+docs/rules/10_viral_pattern_library_rules.md
+docs/rules/11_creative_transfer_rules.md
+```
+
+### 禁止事项
+
+```text
+不要直接复制爆款视频
+不要直接搬运国内短剧台词
+不要使用未经授权的视频画面、人物、音乐、品牌或剧情细节
+不要让狗血剧情压过产品展示
+不要让产品 8 秒后才出现
+不要只有情绪刺激，没有产品证明
+不要为了吸引眼球制造歧视、羞辱、性暗示或冒犯
+不要把不适合当前商品的爆款模式硬套上去
+不要把素材库当成免审创意来源
+```
+
+### 通过条件
+
+一个爆款模式只有满足以下条件，才能进入正式视频规划：
+
+```text
+已完成 viral_pattern_card
+已拆出 attention_trigger
+已区分 transferable_elements 和 non_transferable_elements
+已完成跨文化适配检查
+已完成产品适配检查
+已生成 product_adapted_pattern
+已确认产品能在 8 秒内自然出现
+已确认 12 秒内能开始证明卖点
+已确认 CTA 与商品和场景相关
+已确认没有版权、合规和文化风险
+已确认剧情不会压过产品
+```
+
+## 19. Codex 任务包规则
 
 > 本章负责什么：定义任务包输入、型号绑定、输出目录和 VSCode / Codex 衔接。
 
@@ -2858,7 +4118,7 @@ Codex 根据任务包生成 outputs/ 下的文件
 
 ---
 
-## 18. 数据结构总览
+## 20. 数据结构总览
 
 > 本章负责什么：定义商品系列、型号 / SKU、批次、镜头计划和完整对象的 JSON 结构。
 
@@ -3356,7 +4616,7 @@ Codex 根据任务包生成 outputs/ 下的文件
 }
 ```
 
-## 19. 质量控制规则
+## 21. 质量控制规则
 
 > 本章负责什么：定义系统和 Codex 的禁止行为、输出要求和验收标准。
 
@@ -3440,7 +4700,7 @@ output_goal
 
 ---
 
-## 20. 示例：车载吸尘器
+## 22. 示例：车载吸尘器
 
 > 本章负责什么：用车载吸尘器目标型号展示完整业务链路。
 
@@ -3622,7 +4882,7 @@ outputs/p_001/batch_001/video_01/qc_checklist.md
 
 ---
 
-## 21. 示例：无线直发梳
+## 23. 示例：无线直发梳
 
 > 本章负责什么：用无线直发梳目标型号展示判断、材料和创意约束。
 
@@ -3751,7 +5011,7 @@ variant_id：sku_001
 
 ---
 
-## 22. docs/ 拆分规则
+## 24. docs/ 拆分规则
 
 > 本章负责什么：定义拆分阅读版的目录职责、同步顺序和冲突处理。
 
@@ -3779,7 +5039,7 @@ variant_id：sku_001
 
 本项目不再使用旧编号路径 `docs/04_rules/` 与 `docs/07_examples/`。规则阅读版统一放在 `docs/rules/`，案例阅读版统一放在 `docs/examples/`。旧路径不作为兼容入口保留，旧汇总文档 `docs/99_summary.md` 也不再使用。
 
-## 23. codex_tasks/ 执行规则
+## 25. codex_tasks/ 执行规则
 
 > 本章负责什么：定义 Codex 任务目录的分步执行和逐项验收方式。
 
@@ -3794,7 +5054,7 @@ variant_id：sku_001
 7. 任务文件只能解释如何执行总设计，不能在任务目录中发明新业务规则。
 8. 如果任务要求与 `00_design.md` 冲突，应停止执行并记录冲突，不得自行选择 `docs/` 或任务文件中的旧规则。
 
-## 24. 总结
+## 26. 总结
 
 > 本章负责什么：收束系统边界、权威源、最终核心资产和必须防止的问题。
 

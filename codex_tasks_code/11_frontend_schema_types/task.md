@@ -5,7 +5,7 @@
 ## 前置任务
 - 任务 10 通过；人工已确认手写或生成方式及所需工具。不得自行安装生成器。
 ## 必须读取的文件
-- `00_design.md` 第 6、8、9、15—19、23、24 章。
+- `00_design.md` 第 6、8、9、15—21、23、24 章。
 - `docs/05_data_structures.md`、`docs/99_design_issues.md`。
 - Schema README 与全部 10 个 Schema；前端现有类型/状态配置。
 ## 允许修改的文件
@@ -15,6 +15,7 @@
 ## 具体实现范围
 - 覆盖 product_series、variant、product_profile、judgement_report、material_check、image_asset、creative_direction、video_batch_plan、shot_asset_plan、codex_task_package。
 - 保留 required/optional、枚举、数组、null 与封闭对象含义。
+- 必须从本次更新后的四个 Schema 同步 TikTok 创意结构、模式引用、逐视频 hook/proof/CTA、模式转镜头及任务包迁移字段；不允许前端类型自创、改名或补默认字段。
 - 注释 `selected_variant_id` 引用、型号唯一性、三类 ID、video/shot/task 归属由任务 13 validators 校验。
 ## 禁止越界事项
 - 不新增 Schema 外业务字段、默认值、临时对象或 validator。

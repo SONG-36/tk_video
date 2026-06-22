@@ -2,7 +2,7 @@
 
 > 本文档来源于 `00_design.md`，仅用于阅读，不是权威源；如与 `00_design.md` 冲突，以 `00_design.md` 为准。
 >
-> 来源章节：第 16 章。
+> 来源章节：第 16—18 章。
 
 ## 四类资产
 
@@ -18,6 +18,8 @@
 ## 镜头卡字段
 
 `shot_id`、所属视频、镜头时长、镜头目标、视频分型、画面内容、主体动作、产品是否出现、产品出现方式、对应卖点、字幕、配音、运镜、画面质感、光线、输入图片、参考视频、产品锁定规则、负向提示词、失真风险、输出目标。
+
+使用 viral pattern 时还需增加或预留：`emotional_trigger`、`pattern_role`、是否推进反转、是否证明产品、`product_first_visible_time`、`product_proof_start_time`、`plot_vs_product_balance`、`proof_scene`、`cta_visual`、`text_overlay_plan`、`sound_or_voiceover_plan`。产品首次清晰出现不得晚于 8 秒，产品证明不得晚于 12 秒开始，剧情铺垫不能压过产品证明；跨镜头时间计算由后续 validators 完成。
 
 ## 镜头级提示词字段
 

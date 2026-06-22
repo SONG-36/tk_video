@@ -1,7 +1,7 @@
 {
   "rule_file": "creative_translation_rules.json",
   "rule_set": "creative_translation_rules",
-  "source_section": "00_design.md 第 14 章‘创意方向设定规则’",
+  "source_section": "00_design.md 第 14 章‘创意方向设定规则’；关联第 17、18 章",
   "authority": "00_design.md 是唯一权威源",
   "version": "0.1.0",
   "status": "draft",
@@ -59,6 +59,16 @@
       "reference_assets",
       "shot_prompt_requirements"
     ],
+    "related_rule_sets": [
+      "tiktok_creative_style_rules",
+      "viral_pattern_rules",
+      "creative_transfer_rules"
+    ],
+    "pattern_translation_constraints": {
+      "translate_tiktok_structure_to_executable_direction": true,
+      "distinguish_transferable_from_non_transferable": true,
+      "must_not_copy_source_people_dialogue_visuals_music_brands_or_plot_details": true
+    },
     "priority_order": [
       "产品清晰度",
       "卖点表达",

@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "shot_asset_plan.schema.json",
   "title": "Shot Asset Plan",
-  "description": "来源：00_design.md 第 7、16、18、19 章。镜头资产计划必须携带 product_series_id + variant_id + batch_id，并与来源 video_batch_plan 和 Codex 任务包完全一致。videos[].video_id 必须存在于同一批次，所有 shot 必须归属其 video 和同一 batch，路径必须位于对应系列、批次、视频目录；这些跨对象和路径关系由后续 validators 校验。第 18 章示例未展示三类 ID，本 Schema 按同章数据归属硬规则保留三类 ID。B/C 级与第 19 章的完整资产关系未裁决。",
+  "description": "来源：00_design.md 第 7、16—21 章。镜头资产计划必须携带 product_series_id + variant_id + batch_id，并与来源 video_batch_plan 和 Codex 任务包完全一致。videos[].video_id、shot 归属、路径、产品 8 秒出现、12 秒证明及剧情/产品平衡由后续 validators 校验。Schema 只承载字段，不假装完成跨镜头时间和语义校验。B/C 级与完整资产关系未裁决。",
   "type": "object",
   "required": ["shot_asset_plan"],
   "properties": {
@@ -30,6 +30,11 @@
         "video_id": {"type": "string", "minLength": 1},
         "creative_board_path": {"type": "string", "minLength": 1},
         "storyboard_path": {"type": "string", "minLength": 1},
+        "product_first_visible_time": {"type": "number", "minimum": 0, "description": "秒；必须不晚于 8 秒，由后续 validators 跨镜头校验。"},
+        "product_proof_start_time": {"type": "number", "minimum": 0, "description": "秒；必须不晚于 12 秒，由后续 validators 跨镜头校验。"},
+        "plot_vs_product_balance": {"type": "string", "description": "剧情不能压过产品；判定口径未定义，由后续 validators/人工确认。"},
+        "text_overlay_plan": {"type": "array", "items": {"type": "object"}},
+        "sound_or_voiceover_plan": {"type": "object"},
         "shots": {
           "type": "array",
           "items": {"$ref": "#/$defs/shot"}
@@ -60,14 +65,25 @@
         "product_constraints": {"type": "string"},
         "negative_prompt": {"type": "string"},
         "distortion_risk": {"type": "string", "minLength": 1},
-        "output_goal": {"type": "string"}
+        "output_goal": {"type": "string"},
+        "emotional_trigger": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "pattern_role": {"type": "string"},
+        "product_first_visible_time": {"type": "number", "minimum": 0, "description": "按镜头计划记录的产品首次清晰出现秒数；跨镜头上限由 validators 校验。"},
+        "product_proof_start_time": {"type": "number", "minimum": 0, "description": "按镜头计划记录的产品证明开始秒数；跨镜头上限由 validators 校验。"},
+        "plot_vs_product_balance": {"type": "string", "description": "剧情与产品平衡标记，不在 Schema 中计算。"},
+        "proof_scene": {"type": "string"},
+        "cta_visual": {"type": "string"},
+        "text_overlay_plan": {"type": "array", "items": {"type": "object"}},
+        "sound_or_voiceover_plan": {"type": "object"}
       },
       "additionalProperties": false
     }
   },
   "x-open-issues": [
-    "B/C 级精简输出与第 19 章完整资产验收要求的适用关系未裁决。",
-    "第 18 章 shot_asset_plan 示例未显式展示三类 ID。"
+    "第 15、16 章 B/C 级精简输出与第 21 章完整资产验收要求的适用关系未裁决。",
+    "第 20 章 shot_asset_plan 示例未显式展示三类 ID。",
+    "镜头时间轴单位/连续性与 8/12 秒跨镜头计算算法未定义。",
+    "plot_vs_product_balance 的确定性判定口径未定义。"
   ],
   "additionalProperties": false
 }

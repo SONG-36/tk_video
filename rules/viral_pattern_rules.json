@@ -1,0 +1,25 @@
+{
+  "rule_file": "viral_pattern_rules.json",
+  "rule_set": "viral_pattern_rules",
+  "source_section": "00_design.md 第 18 章‘爆款素材库与创意迁移规则’",
+  "authority": "00_design.md 是唯一权威源",
+  "version": "0.1.0",
+  "status": "draft",
+  "rules": {
+    "viral_pattern_card_schema_projection": {
+      "required_fields": ["pattern_id", "source_platform", "source_region", "source_category", "pattern_name", "original_context_summary", "attention_trigger", "first_3_seconds_mechanism", "retention_mechanism", "emotional_payload", "structure", "transferable_elements", "non_transferable_elements", "suitable_product_types", "risk_flags"],
+      "optional_fields": ["source_url", "unsuitable_product_types"]
+    },
+    "pattern_categories": ["conflict_reversal", "satisfaction_release", "awkward_rescue", "identity_entry", "low_cost_big_problem", "test_challenge"],
+    "source_platforms": ["TikTok", "TikTok Shop", "Douyin", "Xiaohongshu", "Kuaishou", "YouTube Shorts", "Instagram Reels", "competitor_ads", "creator_voiceover", "short_drama"],
+    "ingestion_required_fields": ["source_platform", "source_region", "source_category", "pattern_name", "original_context_summary", "first_3_seconds_mechanism", "retention_mechanism", "ending_mechanism", "emotional_payload", "transferable_elements", "non_transferable_elements", "suitable_product_types", "unsuitable_product_types", "risk_flags"],
+    "transferable_elements_rules": ["structure", "pacing", "emotional_trigger", "shot_logic"],
+    "non_transferable_elements_rules": ["original_people", "original_dialogue", "original_visuals", "original_music", "original_brand", "specific_plot_details", "creator_expression"],
+    "rejection_rules": ["audience_fatigue", "weak_product_relevance", "excessive_production_cost", "high_cultural_risk", "high_platform_compliance_risk", "plot_overpowers_product", "no_product_proof_scene"],
+    "blocked_behaviors": ["save_link_only", "save_screenshot_only", "copy_viral_video", "reuse_unauthorized_people_visuals_music_brand_or_plot", "assume_cn_pattern_fits_us", "treat_library_as_preapproved", "crawl_external_platforms_in_current_implementation"],
+    "pass_conditions": ["card_complete", "attention_and_retention_explained", "transferable_and_non_transferable_separated", "source_and_region_recorded", "risks_recorded", "requires_transfer_check_before_formal_plan"]
+  },
+  "open_issues": [
+    {"issue": "viral_pattern_card 没有独立 Schema、持久化路径、生命周期和 ID 唯一性定义。", "resolution_status": "unresolved"}
+  ]
+}

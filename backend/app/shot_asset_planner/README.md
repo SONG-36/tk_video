@@ -2,7 +2,7 @@
 
 ## 模块职责
 
-按批次和等级规划逐视频 Creative Board、Storyboard 及逐镜头 Shot Card、Prompt 资产。
+按批次和等级规划逐视频 Creative Board、Storyboard 及逐镜头 Shot Card、Prompt 资产，并把 `viral_pattern_card` / `product_adapted_pattern` 转成可执行镜头。
 
 ## 输入
 
@@ -14,7 +14,7 @@
 
 ## 依赖规则
 
-`rules/shot_planning_rules.json`、`rules/video_batch_rules.json`、`rules/image_asset_rules.json`、`rules/creative_translation_rules.json`。
+`rules/shot_planning_rules.json`、`rules/video_batch_rules.json`、`rules/image_asset_rules.json`、`rules/creative_translation_rules.json`、`rules/tiktok_creative_style_rules.json`、`rules/viral_pattern_rules.json`、`rules/creative_transfer_rules.json`。
 
 ## 依赖 Schema
 
@@ -30,8 +30,8 @@
 
 ## 禁止行为
 
-不得为显得专业堆镜头、遗漏图片和风险、生成未规划视频或改变镜头字段。
+不得为显得专业堆镜头、遗漏图片和风险、生成未规划视频或改变镜头字段。必须标注产品首次清晰出现时间和产品证明开始时间；剧情铺垫不能压过产品证明。8/12 秒和剧情平衡是后续 validators 校验，不由 README 假装已实现。
 
 ## 后续实现边界
 
-未来只实现资产规划数据，不生成真实模型内容。B/C 与第 19 章的完整资产关系是设计未裁决约束。
+未来只实现资产规划数据，不生成真实模型内容。B/C 与第 21 章的完整资产关系是设计未裁决约束。

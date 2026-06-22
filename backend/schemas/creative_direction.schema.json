@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "creative_direction.schema.json",
   "title": "Variant Creative Direction",
-  "description": "来源：00_design.md 第 7、14、18 章。目标型号的用户创意选择及系统专业翻译。product_series_id 与 variant_id 必须对应当前 selected_variant_id，由后续 validators 校验。用户自由想法是可选输入，不作为通过条件。",
+  "description": "来源：00_design.md 第 7、14、17、18、20 章。目标型号的用户创意选择、TikTok 原生结构偏好、模式引用及系统专业翻译。product_series_id 与 variant_id 必须对应当前 selected_variant_id，由后续 validators 校验。用户自由想法是可选输入，不作为通过条件。",
   "type": "object",
   "required": ["product_series_id", "variant_id", "creative_direction", "confirmed_by_user"],
   "properties": {
@@ -27,6 +27,26 @@
         "expression_level": {"enum": ["保守真实", "中等夸张", "强戏剧化"]},
         "human_policy": {"enum": ["不允许真人", "只允许手部", "允许真人但不露脸", "允许真人露脸"]},
         "user_free_idea": {"type": "string"},
+        "tiktok_creative_structure": {
+          "type": "object",
+          "description": "TikTok 原生结构偏好或已确认结构；逐视频具体值在 video_batch_plan 中承载。",
+          "properties": {
+            "script_structure": {"type": "array", "items": {"enum": ["Hook", "Problem", "Product", "Proof", "CTA"]}},
+            "retention_requirements": {"type": "array", "items": {"type": "string"}},
+            "cta_requirements": {"type": "array", "items": {"type": "string"}},
+            "text_overlay_required": {"type": "boolean"},
+            "sound_or_voiceover_required": {"type": "boolean"}
+          },
+          "additionalProperties": false
+        },
+        "hook_preferences": {
+          "type": "array",
+          "items": {"enum": ["pain_point_direct", "result_first", "failed_method", "counterintuitive", "audience_callout", "scene_entry", "suspense_reverse", "test_challenge", "price_value"]},
+          "uniqueItems": true
+        },
+        "native_style_requirement": {"type": "string"},
+        "viral_pattern_refs": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "adapted_pattern_refs": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
         "system_translation": {
           "type": "object",
           "required": ["camera_language", "visual_texture", "rhythm", "asset_needs"],

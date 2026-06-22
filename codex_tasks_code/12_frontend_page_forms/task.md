@@ -6,7 +6,7 @@
 - 任务 11 通过；目标页路由、守卫、类型及契约已确定。
 - 未指定唯一 `TARGET_PAGE` 或目标页存在未裁决契约时阻断。
 ## 必须读取的文件
-- `00_design.md` 第 4、7—19、23、24 章中目标页内容。
+- `00_design.md` 第 4、7—21、23、24 章中目标页内容。
 - 全部页面 README、目标页依赖 Schema/rules/backend README、前端类型与状态机。
 - `docs/03_page_design.md`、`04_state_machine.md`、`99_design_issues.md`。
 ## 允许修改的文件
@@ -17,8 +17,10 @@
 - 15 个目标依次为任务 09 路由清单；每次实现字段展示、允许输入、已有人工确认按钮、通过/阻断提示和 ID 上下文。
 - 报告/任务包/输出页只展示 fixture 契约，不生成报告、任务包或读取 outputs。
 - 累计完成标准是 15 份独立验收记录，不允许一次批量实现。
+- `creative_direction`、`video_batch_plan`、`shot_asset_plan`、`task_package_export`、`output_viewer` 必须按更新后的页面 README/Schema 支持 TikTok 创意结构、hook/proof/CTA、模式选择与适配、镜头迁移、导出字段及存在性/风险展示。
 ## 禁止越界事项
 - 不调用 API、不生成真实报告/任务包、不读 outputs、不复制后端规则。
+- 不抓取 TikTok、Douyin、小红书、YouTube 等外部平台，不把素材库做成爬虫或自动分析服务。
 - 不新增字段、按钮语义、默认业务值或自动确认。
 ## 已知未裁决问题处理方式
 - `product_create`、`category_confirm` 因缺少独立 Schema 阻断数据提交类型；只可在人工补契约后实现。

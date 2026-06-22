@@ -2,7 +2,7 @@
 
 ## 模块职责
 
-把用户创意选择翻译为剧情、运镜、质感、节奏、光线、素材和提示词要求。
+把用户创意选择翻译为剧情、运镜、质感、节奏、光线、素材和提示词要求，并把 TikTok 原生创意结构与爆款模式迁移成可执行创意方向。
 
 ## 输入
 
@@ -14,7 +14,7 @@
 
 ## 依赖规则
 
-`rules/creative_translation_rules.json`。
+`rules/creative_translation_rules.json`、`rules/tiktok_creative_style_rules.json`、`rules/viral_pattern_rules.json`、`rules/creative_transfer_rules.json`。
 
 ## 依赖 Schema
 
@@ -30,7 +30,7 @@
 
 ## 禁止行为
 
-不得让创意优先于产品清晰度和卖点，不得新增配件、参数、版权元素或绕过真人限制。
+不得让创意优先于产品清晰度和卖点，不得新增配件、参数、版权元素或绕过真人限制。必须区分可迁移的结构/节奏/情绪与不可复制的人物、台词、画面、音乐、品牌和剧情细节。
 
 ## 后续实现边界
 

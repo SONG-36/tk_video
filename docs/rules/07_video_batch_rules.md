@@ -2,7 +2,7 @@
 
 > 本文档来源于 `00_design.md`，仅用于阅读，不是权威源；如与 `00_design.md` 冲突，以 `00_design.md` 为准。
 >
-> 来源章节：第 15 章。
+> 来源章节：第 15、17、18 章。
 
 ## 批量生成原则
 
@@ -16,11 +16,11 @@
 
 ## 批次目标
 
-测试不同视频分型、开头钩子、卖点、使用场景、创意风格或用户痛点。
+测试不同视频分型、开头钩子、卖点、使用场景、创意风格、用户痛点、爆款模式、情绪触发、前 3 秒机制、本地化迁移方式或剧情强度。一个批次内应避免 3 条视频使用同一种前 3 秒机制。
 
 ## 每条视频字段
 
-`video_id`、视频分型、创意风格、主卖点、使用场景、目标痛点、生成等级、是否生成镜头提示词、是否需要真人、是否需要原图锁定、是否需要竞品素材、预计镜头数、预计时长。
+原有字段外，增加或预留 `hook_type`、`first_3_seconds_text`、`first_3_seconds_visual`、`scroll_stop_reason`、`emotional_trigger`、`script_structure`、`retention_design`、`key_message`、`proof_point`、`cta`、`tiktok_native_style`、`text_overlay_plan`、`sound_or_voiceover_plan`、`viral_pattern_ref`、`adapted_pattern_ref`。
 
 ## 输出结构
 

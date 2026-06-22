@@ -1,0 +1,74 @@
+{
+  "rule_file": "tiktok_creative_style_rules.json",
+  "rule_set": "tiktok_creative_style_rules",
+  "source_section": "00_design.md 第 17 章‘TikTok 原生短视频创意结构规则’",
+  "authority": "00_design.md 是唯一权威源",
+  "version": "0.1.0",
+  "status": "draft",
+  "rules": {
+    "hook_types": {
+      "pain_point_direct": "痛点直击型",
+      "result_first": "结果先行型",
+      "failed_method": "失败对比型",
+      "counterintuitive": "反常识型",
+      "audience_callout": "人群点名型",
+      "scene_entry": "场景代入型",
+      "suspense_reverse": "悬念反转型",
+      "test_challenge": "测评挑战型",
+      "price_value": "价格/优惠型"
+    },
+    "time_segments": {
+      "0_3s": {"goal": "scroll_stop", "required_fields": ["first_3_seconds_text", "first_3_seconds_visual", "scroll_stop_reason", "product_relevance"]},
+      "3_8s": {"goal": "problem_or_conflict", "must_enter_specific_scene": true},
+      "8_18s": {"goal": "product_solution_and_proof", "visual_proof_required": true},
+      "18_25s": {"goal": "result_and_trust", "missing_parameters_use_placeholders": true},
+      "final_2_3s": {"goal": "cta", "must_relate_to_problem_or_result": true}
+    },
+    "script_structure": ["Hook", "Problem", "Product", "Proof", "CTA"],
+    "native_style_check": {
+      "positive_signals": ["direct_conflict_or_result", "friend_recommendation_tone", "real_usage_feel", "short_spoken_overlays", "natural_product_entry", "fast_but_clear_pacing", "natural_cta"],
+      "risk_signals": ["long_logo_intro", "slow_product_rotation", "parameter_dump", "studio_only_without_usage", "manual_like_subtitles", "training_like_voiceover", "brand_slogan_without_action"]
+    },
+    "text_overlay_rules": {
+      "required_plan": "text_overlay_plan",
+      "first_3_seconds_information_required": true,
+      "one_meaning_per_screen": true,
+      "must_not_cover_product": true,
+      "short_spoken_language": true
+    },
+    "sound_or_voiceover_rules": {
+      "required_plan": "sound_or_voiceover_plan",
+      "allowed_types": ["native_voiceover", "narration", "ambient_sound", "action_sound", "rhythm_music", "transition_sound", "subtitle_only"],
+      "voiceover_must_not_repeat_overlay": true,
+      "music_must_not_mask_core_information": true
+    },
+    "retention_rules": {
+      "required_field": "retention_design",
+      "mechanisms": ["visual_change_every_2_4_seconds", "failed_to_product_method", "problem_to_solution", "detail_to_result", "result_suspense", "progressive_visual_proof"]
+    },
+    "cta_rules": {
+      "types": ["product_card_click", "comment_question", "save_for_later", "compare_before_buy", "limited_offer", "scenario_action"],
+      "must_relate_to_problem_and_result": true,
+      "must_not_invent_offer_inventory_or_sales": true
+    },
+    "video_type_structures": {
+      "life_scenario": ["scene_problem", "usage_trouble", "product_solution", "result_cta"],
+      "selling_point": ["strong_claim_or_problem", "core_function", "two_or_three_proofs", "audience_cta"],
+      "unboxing": ["result_or_packaging_hook", "package_and_accessories", "detail_and_usage_value", "audience_cta"],
+      "buyer_seller_show": ["human_result", "before_problem", "usage_steps", "result_experience_cta"],
+      "evaluation_comparison": ["challenge_or_suspense", "comparison_standard", "test_process", "result_advice_cta"]
+    },
+    "category_hook_preferences": {
+      "automotive": ["pain_point_direct", "failed_method", "scene_entry", "test_challenge", "counterintuitive"],
+      "beauty_personal_care": ["result_first", "audience_callout", "scene_entry"],
+      "home_appliance": ["pain_point_direct", "result_first", "counterintuitive"],
+      "pet_supplies": ["scene_entry", "test_challenge", "audience_callout"]
+    },
+    "required_video_fields": ["hook", "script_structure", "retention_design", "key_message", "proof_point", "cta", "tiktok_native_style", "text_overlay_plan", "sound_or_voiceover_plan"],
+    "blocked_behaviors": ["traditional_ad_style", "brand_intro_in_first_3_seconds", "today_i_introduce_hook", "same_hook_for_every_video", "script_without_visual_proof", "product_only_without_usage_scene", "slogan_without_action", "plot_over_product_clarity", "cinematic_style_over_native_style", "invented_offer_inventory_sales_parameters_or_certification"],
+    "pass_conditions": ["hook_type_selected", "first_3_seconds_fields_complete", "all_time_segments_planned", "key_message_present", "proof_point_present", "retention_design_present", "text_overlay_plan_present", "sound_or_voiceover_plan_present", "cta_complete", "native_style_check_passed", "no_blocked_behavior"]
+  },
+  "open_issues": [
+    {"issue": "类目钩子偏好中的若干中文类型未映射到正式 hook_type 枚举。", "resolution_status": "unresolved"}
+  ]
+}

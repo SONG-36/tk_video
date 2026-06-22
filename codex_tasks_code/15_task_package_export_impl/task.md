@@ -5,7 +5,7 @@
 ## 前置任务
 - 任务 13/14 通过；任务 06 模板与 Schema 同步。
 ## 必须读取的文件
-- `00_design.md` 第 4—9、12—19、23、24 章。
+- `00_design.md` 第 4—9、12—21、23、24 章。
 - `docs/06_codex_task_package.md`、质量说明、设计问题；generator README；任务包及引用 Schema；data/tasks README；占位脚本；13/14 接口。
 ## 允许修改的文件
 - `backend/app/task_package_generator/` 源码；`scripts/export_codex_task.py` 接入；对应测试和隔离样例 data fixture。
@@ -13,6 +13,8 @@
 - 设计/docs/rules/Schema/frontend/真实 data/outputs；其他 backend 模块。
 ## 具体实现范围
 - 读取已确认报告、材料、图片、创意、批次、镜头计划；校验同一三类 ID、目标型号和前序状态。
+- 聚合 `tiktok_creative_requirements`、逐视频 hook/proof/CTA、`viral_pattern_cards`、`product_adapted_patterns`、`creative_transfer_constraints` 和 `blocked_copying_behaviors`。
+- 正式任务包缺少 hook、proof 或 CTA 时零写入并返回阻断；草案适用边界只按权威设计的“不完整”标记处理，不自行扩展正式资产定义。
 - 缺对象或 ID 不一致零写入；输出仅两个既定文件名；支持 dry-run。
 - 不直接调用 Codex/Seedance/即梦，不读取 outputs。
 ## 禁止越界事项

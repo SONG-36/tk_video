@@ -9,7 +9,7 @@
 ## 输入
 
 - `product_series_id`。
-- `variant_id`，用于验证输出上下文属于当前 `selected_variant_id`；它不改变第 17 章的目录层级。
+- `variant_id`，用于验证输出上下文属于当前 `selected_variant_id`；它不改变第 19 章的目录层级。
 - `batch_id`。
 - 已确认的 `video_batch_plan`。
 - 未来文件系统中的 `outputs/{product_series_id}/{batch_id}/` 批次根。
@@ -23,12 +23,13 @@
 - 缺失项。
 - 风险项和既有质量字段。
 - 路径、归属或读取错误信息。
+- 已规划视频中 hook、proof、CTA、TikTok native style、viral pattern 和适配结果字段的存在性信息。
 
 本任务不创建 `output_index.json`、`missing_files.json`、`viewer_payload.json` 或其他结果文件，也不生成真实输出。
 
 ## 依赖规则
 
-`rules/video_batch_rules.json`、`rules/shot_planning_rules.json`。规则文件是机器可读投影，不能覆盖 `00_design.md`。
+`rules/video_batch_rules.json`、`rules/shot_planning_rules.json`、`rules/tiktok_creative_style_rules.json`、`rules/creative_transfer_rules.json`。规则文件是机器可读投影，不能覆盖 `00_design.md`。
 
 ## 依赖 Schema
 
@@ -73,10 +74,11 @@
 - 不创建缺失文件、目录、索引文件或 viewer payload。
 - 不自动复制其他系列、型号或批次文件。
 - 不修改质量结论，不自动修复质量问题。
+- 只检查 hook/proof/CTA/native style/viral pattern 等字段和结构是否存在，不进行主观质量评分。
 - 不解析或生成视频二进制。
 - 不调用 Codex、Seedance、即梦、OCR、VLM、API 或其他模型。
 - 不创建数据库、API、UI、监控服务或后台任务。
 
 ## 后续实现边界
 
-未来只实现受批次白名单和路径边界约束的本地只读读取。实现前必须继续保留 B/C 级资产与第 19 章完整资产要求的未裁决约束，不得由读取器决定缺失是否合规。
+未来只实现受批次白名单和路径边界约束的本地只读读取。实现前必须继续保留 B/C 级资产与第 21 章完整资产要求的未裁决约束，不得由读取器决定缺失是否合规。

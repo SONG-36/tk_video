@@ -3,8 +3,10 @@
 - [ ] 只有一个样例 fixture、模拟 outputs、集成测试/说明和有证据的缺陷修复。
 ## 功能检查
 - [ ] 样例 data 完整；validators 通过；任务包可导出；reader 可读模拟 outputs；前端到 output_viewer。
+- [ ] 所选样例含至少一个 viral pattern 卡和一个商品适配结果，且任务包/输出查看链路可追踪。
 ## 业务边界检查
 - [ ] 无外部 API/AI/TikTok；无真实 data/outputs 写入；样例特例未通用化。
+- [ ] “尴尬救场 + failed_method”或“结果先行 + 上班前救急”只存在于相应样例 fixture/说明。
 ## ID 绑定检查
 - [ ] 全链路同一 product_series/variant/batch，其他型号资料未混入。
 ## 状态机/流程检查

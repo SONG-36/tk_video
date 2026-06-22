@@ -3,6 +3,8 @@
 - [ ] 仅 generator、导出脚本接入和隔离测试/fixture 变化。
 ## 功能检查
 - [ ] 样例 data 可生成既定 MD/JSON；缺对象或 validator 失败零写入。
+- [ ] 两种任务包均聚合 TikTok 创意结构、模式卡、适配结果和迁移/禁止复制约束。
+- [ ] 正式任务包缺少 hook、proof 或 CTA 时被阻止且零写入。
 ## 业务边界检查
 - [ ] 不调用 Codex/模型/API，不读取或修改 outputs，不补造材料。
 ## ID 绑定检查

@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "video_batch_plan.schema.json",
   "title": "Video Batch Plan",
-  "description": "来源：00_design.md 第 7、15、18、19 章。视频批次唯一绑定 product_series_id + variant_id + batch_id。variant_id 必须等于当前 selected_variant_id，三类 ID 必须与镜头计划和任务包一致，total_videos 必须等于 videos 实际数量，video_id 在批次内必须唯一；这些跨对象或跨数组关系由后续 validators 校验。B/C 级精简输出与第 19 章完整资产验收要求的适用关系未裁决，本 Schema 不强制把 B/C 改成完整资产。",
+  "description": "来源：00_design.md 第 7、15、17—21 章。视频批次唯一绑定 product_series_id + variant_id + batch_id。variant_id 必须等于当前 selected_variant_id，三类 ID、video_id 唯一、数组数量、同批次 hook 机制差异和模式引用由后续 validators 校验。B/C 级精简输出与完整资产验收要求的适用关系未裁决，本 Schema 不强制把 B/C 改成完整资产。",
   "type": "object",
   "required": ["video_batch_plan"],
   "properties": {
@@ -57,13 +57,47 @@
         "requires_product_image_lock": {"type": "boolean"},
         "requires_competitor_assets": {"type": "boolean"},
         "estimated_shot_count": {"type": "integer", "minimum": 0},
-        "duration": {"type": "string", "minLength": 1}
+        "duration": {"type": "string", "minLength": 1},
+        "hook_type": {"enum": ["pain_point_direct", "result_first", "failed_method", "counterintuitive", "audience_callout", "scene_entry", "suspense_reverse", "test_challenge", "price_value"]},
+        "first_3_seconds_text": {"type": "string"},
+        "first_3_seconds_visual": {"type": "string"},
+        "scroll_stop_reason": {"type": "string"},
+        "emotional_trigger": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "script_structure": {
+          "type": "object",
+          "properties": {
+            "0_3s": {"type": "string"},
+            "3_8s": {"type": "string"},
+            "8_18s": {"type": "string"},
+            "18_25s": {"type": "string"},
+            "final_2_3s": {"type": "string"}
+          },
+          "additionalProperties": false
+        },
+        "retention_design": {"type": "object"},
+        "key_message": {"type": "string"},
+        "proof_point": {"type": "string"},
+        "cta": {
+          "type": "object",
+          "properties": {
+            "cta_type": {"enum": ["product_card_click", "comment_question", "save_for_later", "compare_before_buy", "limited_offer", "scenario_action"]},
+            "cta_text": {"type": "string"},
+            "cta_visual": {"type": "string"}
+          },
+          "additionalProperties": false
+        },
+        "tiktok_native_style": {"type": "object"},
+        "text_overlay_plan": {"type": "array", "items": {"type": "object"}},
+        "sound_or_voiceover_plan": {"type": "object"},
+        "viral_pattern_ref": {"type": "string", "minLength": 1},
+        "adapted_pattern_ref": {"type": "string", "minLength": 1}
       },
       "additionalProperties": false
     }
   },
   "x-open-issues": [
-    "第 15、16 章的 B/C 级精简输出与第 19 章完整资产验收要求的适用关系未裁决。"
+    "第 15、16 章的 B/C 级精简输出与第 21 章完整资产验收要求的适用关系未裁决。",
+    "一个批次内不同前 3 秒机制的严格差异算法尚未定义。"
   ],
   "additionalProperties": false
 }

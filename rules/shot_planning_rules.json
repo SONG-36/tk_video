@@ -1,7 +1,7 @@
 {
   "rule_file": "shot_planning_rules.json",
   "rule_set": "shot_planning_rules",
-  "source_section": "00_design.md 第 16 章‘镜头资产规划规则’；关联第 19 章‘输出验收标准’",
+  "source_section": "00_design.md 第 16 章‘镜头资产规划规则’；关联第 17、18、21 章",
   "authority": "00_design.md 是唯一权威源",
   "version": "0.1.0",
   "status": "draft",
@@ -67,8 +67,27 @@
       "product_constraints",
       "negative_prompt",
       "distortion_risk",
-      "output_goal"
+      "output_goal",
+      "emotional_trigger",
+      "pattern_role",
+      "advances_reversal",
+      "proves_product",
+      "product_first_visible_time",
+      "product_proof_start_time",
+      "plot_vs_product_balance",
+      "proof_scene",
+      "cta_visual",
+      "text_overlay_plan",
+      "sound_or_voiceover_plan"
     ],
+    "creative_transfer_constraints": {
+      "related_rule_sets": ["tiktok_creative_style_rules", "viral_pattern_rules", "creative_transfer_rules"],
+      "convert_pattern_cards_to_shots": true,
+      "product_first_visible_max_seconds": 8,
+      "product_proof_start_max_seconds": 12,
+      "plot_must_not_overpower_product": true,
+      "cross_shot_timing_and_balance_require_validators": true
+    },
     "seedance_prompt_fields": [
       "shot_id",
       "duration",
@@ -109,12 +128,12 @@
   },
   "open_issues": [
     {
-      "issue": "第 16 章按 A/B/C 级区分镜头资产完整度，但第 19 章对每条视频统一要求完整镜头卡和镜头级提示词；适用关系尚未裁决。",
+      "issue": "第 16 章按 A/B/C 级区分镜头资产完整度，但第 21 章对每条视频统一要求完整镜头卡和镜头级提示词；适用关系尚未裁决。",
       "resolution_status": "unresolved",
       "must_not_resolve_in_rule_projection": true
     },
     {
-      "issue": "第 18 章 shot_asset_plan 示例未在对象自身显式展示 product_series_id、variant_id、batch_id，但数据归属硬规则要求三者齐全。",
+      "issue": "第 20 章 shot_asset_plan 示例未在对象自身显式展示 product_series_id、variant_id、batch_id，但数据归属硬规则要求三者齐全。",
       "resolution_status": "unresolved"
     }
   ]

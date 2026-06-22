@@ -1,0 +1,28 @@
+{
+  "rule_file": "creative_transfer_rules.json",
+  "rule_set": "creative_transfer_rules",
+  "source_section": "00_design.md 第 18 章‘爆款素材库与创意迁移规则’",
+  "authority": "00_design.md 是唯一权威源",
+  "version": "0.1.0",
+  "status": "draft",
+  "rules": {
+    "cross_cultural_adaptation_check": ["understandable_relationships", "conflict_intensity", "class_gender_humiliation_risk", "natural_english", "us_daily_scene_fit", "reasonable_product_entry", "tiktok_shop_cta_fit"],
+    "product_fit_check": ["natural_product_introduction", "product_as_solution", "visual_proof_available", "human_scene_prop_requirements", "plot_not_over_product", "no_exaggerated_claim", "extra_assets_identified", "no_product_distortion"],
+    "transfer_flow": ["select_viral_pattern_card", "identify_attention_trigger", "extract_transferable_elements", "remove_non_transferable_elements", "match_product_profile", "match_video_type", "match_assets_and_materials", "generate_product_adapted_pattern", "check_native_style", "check_product_clarity_and_compliance", "enter_batch_or_shot_plan"],
+    "product_adapted_pattern_schema_projection": {
+      "required_fields": ["adapted_pattern_id", "source_pattern_id", "product_series_id", "variant_id", "batch_id", "video_id", "adapted_concept", "hook_type", "first_3_seconds_text", "first_3_seconds_visual", "emotional_trigger", "product_role", "proof_scene", "cta", "risk_check"]
+    },
+    "video_batch_constraints": ["test_pattern_emotion_hook_and_localization", "three_videos_should_not_share_one_first_3_seconds_mechanism", "reference_pattern_and_adapted_pattern_per_video"],
+    "shot_planning_constraints": ["convert_pattern_to_shots", "mark_emotional_trigger", "mark_reversal_progress", "mark_product_proof", "mark_plot_only_shots", "record_product_first_visible_time", "record_product_proof_start_time"],
+    "codex_task_package_constraints": ["include_viral_pattern_cards", "include_product_adapted_patterns", "reference_pattern_not_source_copy", "product_must_be_solution", "visual_proof_required", "cta_required"],
+    "product_first_visible_max_seconds": 8,
+    "product_proof_start_max_seconds": 12,
+    "plot_must_not_overpower_product": true,
+    "blocked_behaviors": ["direct_dialogue_translation", "copy_people_dialogue_visuals_music_brand_or_plot_details", "copy_cn_short_drama_setting", "offensive_emotional_trigger", "late_product_entry", "emotion_without_product_proof", "force_unfit_pattern"],
+    "pass_conditions": ["viral_pattern_card_complete", "transferable_and_non_transferable_separated", "cross_cultural_check_complete", "product_fit_check_complete", "product_adapted_pattern_generated", "product_visible_within_8_seconds", "product_proof_starts_within_12_seconds", "cta_relevant", "copyright_cultural_compliance_risks_clear", "plot_does_not_overpower_product"]
+  },
+  "open_issues": [
+    {"issue": "镜头时间轴的数值单位、连续性和 8/12 秒跨镜头计算算法未定义。", "resolution_status": "unresolved"},
+    {"issue": "plot_vs_product_balance 的确定性判定口径未定义。", "resolution_status": "unresolved"}
+  ]
+}

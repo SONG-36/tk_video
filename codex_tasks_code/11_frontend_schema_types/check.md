@@ -3,8 +3,10 @@
 - [ ] 10 个 Schema 类型、统一导出和契约测试存在；Schema 零修改。
 ## 功能检查
 - [ ] 类型检查通过，required/枚举/数组/null 与源 Schema 一致。
+- [ ] 第 17/18 章新增字段均来自更新后的 Schema，四个相关类型与 Schema 保持等价。
 ## 业务边界检查
 - [ ] 无新字段、临时接口、默认值、运行时 validator 或页面逻辑。
+- [ ] 前端没有自创 TikTok、viral pattern 或 creative transfer 字段。
 ## ID 绑定检查
 - [ ] 三类 ID 存在；`selected_variant_id` 和跨对象关系明确注释交给任务 13。
 ## 状态机/流程检查

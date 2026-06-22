@@ -2,11 +2,13 @@
 
 > 本文档来源于 `00_design.md`，仅用于阅读，不是权威源；如与 `00_design.md` 冲突，以 `00_design.md` 为准。
 >
-> 来源章节：第 1、3、22 章。
+> 来源章节：第 1、3、17、18、24 章。
 
 ## 负责什么
 
 `docs/` 按主题拆分权威源，便于阅读和定位；`docs/rules/` 保存规则阅读版 Markdown，`docs/examples/` 保存案例阅读版，`docs/99_design_issues.md` 只记录问题。
+
+第 17 章 TikTok 原生短视频创意结构与第 18 章爆款素材库/创意迁移已同步进入页面、数据结构、任务包、输出、质控和开发计划阅读版；详细规则分别见 `docs/rules/09_tiktok_creative_style_rules.md`、`10_viral_pattern_library_rules.md`、`11_creative_transfer_rules.md`。
 
 ## 不负责什么
 
