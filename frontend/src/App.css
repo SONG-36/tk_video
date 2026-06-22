@@ -51,3 +51,8 @@ body {
 .route-placeholder p {
   margin: 0;
 }
+
+.workflow-flag-list {
+  margin: 0.5rem 0 0;
+  padding-left: 1.5rem;
+}
