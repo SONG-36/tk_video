@@ -1,4 +1,5 @@
 import type { PageKey } from '../pages/pageMeta'
+import type { CreativeReadinessFlags } from '../types/creative'
 import type { WorkflowStatus } from './workflowStatus'
 
 export const WORKFLOW_FLAGS = [
@@ -11,9 +12,9 @@ export const WORKFLOW_FLAGS = [
   'cta_missing',
   'product_first_visible_late_risk',
   'product_proof_late_risk',
-] as const
+] as const satisfies readonly (keyof CreativeReadinessFlags)[]
 
-export type WorkflowFlag = (typeof WORKFLOW_FLAGS)[number]
+export type WorkflowFlag = keyof CreativeReadinessFlags
 
 export const VARIANT_BOUND_PAGE_KEYS = [
   'variant_profile',
@@ -47,7 +48,7 @@ export interface WorkflowState {
   status: WorkflowStatus
   selected_variant_id: string | null
   batch_id: string | null
-  flags: Record<WorkflowFlag, boolean>
+  flags: CreativeReadinessFlags
   variantBindings: Partial<Record<VariantBoundPageKey, string>>
   invalidatedObjects: Partial<
     Record<InvalidatableVariantObjectKey, boolean>
@@ -55,7 +56,7 @@ export interface WorkflowState {
   seriesSharedMaterialsRetained: boolean
 }
 
-export function createWorkflowFlags(): Record<WorkflowFlag, boolean> {
+export function createWorkflowFlags(): CreativeReadinessFlags {
   return Object.fromEntries(
     WORKFLOW_FLAGS.map((flag) => [flag, false]),
   ) as Record<WorkflowFlag, boolean>
