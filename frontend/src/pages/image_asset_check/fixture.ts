@@ -1,0 +1,7 @@
+import type{ImageAsset,ImageAssetType}from'../../types/imageAsset';import{createWorkflowState}from'../../state/workflowState'
+export const fixtureSource='00_design.md 第 13、20、22 章图片示例、image_asset.schema.json 与图片规则；仅用于页面内存。'
+export const context={product_series_id:'p_001',selected_variant_id:'sku_001',status:'materials_checked'}as const
+export const workflow=createWorkflowState({status:'materials_checked',selected_variant_id:'sku_001'})
+export const images:ImageAsset[]=[['img_001','front.png','product_reference','front'],['img_002','side.png','product_reference','side'],['img_003','detail.png','product_detail','nozzle'],['img_004','package.png','packaging','front'],['img_005','car.png','usage_scene','wide'],['img_006','accessories.png','product_detail','top']].map(([image_id,file_name,image_type,view_angle])=>({product_series_id:'p_001',variant_id:'sku_001',image_id,file_name,image_type:image_type as ImageAssetType,view_angle,usage:['lock_product_shape'],quality:'standard',required:true,notes:'fixture'}))
+export const missingImages=['产品背面图','产品 45 度角图','清洁前后对比图'];export const summary={completeness_level:'standard',distortion_risk:'medium',capability:'允许标准镜头提示词，提示缺失角度'}as const
+export function getIssues(items:ImageAsset[],variantId:string){const a:string[]=[];if(!variantId)a.push('缺少目标型号 ID。');if(items.length<3)a.push('图片少于 3 张，禁止高质量镜头提示词。');if(!items.some(i=>i.image_type==='product_reference'))a.push('缺少产品外观锁定图。');return a}

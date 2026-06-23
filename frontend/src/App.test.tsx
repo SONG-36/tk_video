@@ -39,12 +39,9 @@ describe('frontend route shell', () => {
   it.each(pageMeta)('renders $key at its example path', (page) => {
     const markup = renderRoute(page.examplePath)
 
-    expect(markup).toContain(`<h1>${page.title}</h1>`)
     expect(markup).toContain(`<strong>Page key:</strong> ${page.key}`)
     expect(markup).toContain(`<strong>Current route:</strong> ${page.examplePath}`)
-    expect(markup).toContain(
-      'This page is a route placeholder. No business logic implemented.',
-    )
+    expect(markup).toContain(`data-page="${page.key}"`)
   })
 
   it('makes /products directly accessible', () => {

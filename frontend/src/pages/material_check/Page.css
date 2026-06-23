@@ -1,0 +1,100 @@
+.material-check-page {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 960px;
+}
+
+.material-check-page h1,
+.material-check-page h2,
+.material-check-page h3,
+.material-check-page p,
+.material-check-page dl,
+.material-check-page fieldset {
+  margin: 0;
+}
+
+.material-check-context,
+.material-check-panel {
+  padding: 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  background: #ffffff;
+}
+
+.material-check-context dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.4rem 1rem;
+  margin-top: 0.75rem;
+}
+
+.material-check-context dd {
+  margin: 0;
+}
+
+.material-check-notice {
+  padding: 0.75rem 1rem;
+  border-left: 4px solid #b45309;
+  background: #fffbeb;
+}
+
+.material-check-success {
+  padding: 0.75rem 1rem;
+  border-left: 4px solid #15803d;
+  background: #f0fdf4;
+}
+
+.material-check-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.material-check-list {
+  margin: 0.6rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.material-check-field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.material-check-field textarea {
+  padding: 0.55rem;
+}
+
+.material-check-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.material-check-actions button {
+  padding: 0.65rem 1rem;
+  border: 0;
+  border-radius: 0.4rem;
+  color: #ffffff;
+  background: #1d4ed8;
+  cursor: pointer;
+}
+
+.material-check-actions button[type='button'] {
+  color: #1e3a8a;
+  background: #dbeafe;
+}
+
+.material-check-debug summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.material-check-debug pre {
+  overflow: auto;
+  padding: 0.75rem;
+  background: #0f172a;
+  color: #e2e8f0;
+}

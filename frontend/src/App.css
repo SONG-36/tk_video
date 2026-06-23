@@ -56,3 +56,19 @@ body {
   margin: 0.5rem 0 0;
   padding-left: 1.5rem;
 }
+
+.local-form-page { display: grid; gap: 1rem; max-width: 1000px; }
+.local-form-page h1, .local-form-page h2, .local-form-page h3, .local-form-page p, .local-form-page dl, .local-form-page fieldset { margin: 0; }
+.local-panel { padding: 1rem; border: 1px solid #cbd5e1; border-radius: .5rem; background: #fff; }
+.local-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .8rem; margin-top: .75rem; }
+.local-field { display: grid; gap: .35rem; }
+.local-field input, .local-field select, .local-field textarea { padding: .5rem; }
+.local-alert { padding: .7rem 1rem; border-left: 4px solid #b45309; background: #fffbeb; }
+.local-success { padding: .7rem 1rem; border-left: 4px solid #15803d; background: #f0fdf4; }
+.local-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .7rem; }
+.local-actions button { padding: .6rem .9rem; border: 0; border-radius: .35rem; background: #1d4ed8; color: #fff; cursor: pointer; }
+.local-list { margin: .5rem 0 0; padding-left: 1.25rem; }
+.local-debug summary { cursor: pointer; font-weight: 600; }
+.local-debug pre { overflow: auto; padding: .7rem; background: #0f172a; color: #e2e8f0; }
+.local-table { width: 100%; border-collapse: collapse; margin-top: .75rem; }
+.local-table th, .local-table td { padding: .55rem; border: 1px solid #cbd5e1; text-align: left; vertical-align: top; }

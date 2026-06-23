@@ -1,0 +1,109 @@
+.variant-profile-page {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 960px;
+}
+
+.variant-profile-page h1,
+.variant-profile-page h2,
+.variant-profile-page p,
+.variant-profile-page dl,
+.variant-profile-page fieldset {
+  margin: 0;
+}
+
+.variant-profile-context,
+.variant-profile-panel {
+  padding: 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  background: #ffffff;
+}
+
+.variant-profile-context dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.4rem 1rem;
+  margin-top: 0.75rem;
+}
+
+.variant-profile-context dd {
+  margin: 0;
+}
+
+.variant-profile-notice {
+  padding: 0.75rem 1rem;
+  border-left: 4px solid #b45309;
+  background: #fffbeb;
+}
+
+.variant-profile-success {
+  padding: 0.75rem 1rem;
+  border-left: 4px solid #15803d;
+  background: #f0fdf4;
+}
+
+.variant-profile-field-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.variant-profile-field {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.variant-profile-field select {
+  max-width: 28rem;
+  padding: 0.5rem;
+}
+
+.variant-profile-fieldset {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid #cbd5e1;
+}
+
+.variant-profile-radio-row,
+.variant-profile-checkbox-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+}
+
+.variant-profile-unresolved-list,
+.variant-profile-issue-list {
+  margin: 0.75rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.variant-profile-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.variant-profile-actions button {
+  padding: 0.65rem 1rem;
+  border: 0;
+  border-radius: 0.4rem;
+  color: #ffffff;
+  background: #1d4ed8;
+  cursor: pointer;
+}
+
+.variant-profile-debug summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.variant-profile-debug pre {
+  overflow: auto;
+  padding: 0.75rem;
+  background: #0f172a;
+  color: #e2e8f0;
+}

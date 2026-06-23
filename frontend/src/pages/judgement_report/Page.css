@@ -1,0 +1,108 @@
+.judgement-report-page {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 980px;
+}
+
+.judgement-report-page h1,
+.judgement-report-page h2,
+.judgement-report-page h3,
+.judgement-report-page p,
+.judgement-report-page dl,
+.judgement-report-page fieldset {
+  margin: 0;
+}
+
+.judgement-report-context,
+.judgement-report-panel {
+  padding: 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  background: #ffffff;
+}
+
+.judgement-report-context dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.4rem 1rem;
+  margin-top: 0.75rem;
+}
+
+.judgement-report-context dd {
+  margin: 0;
+}
+
+.judgement-report-notice {
+  padding: 0.75rem 1rem;
+  border-left: 4px solid #b45309;
+  background: #fffbeb;
+}
+
+.judgement-report-success {
+  padding: 0.75rem 1rem;
+  border-left: 4px solid #15803d;
+  background: #f0fdf4;
+}
+
+.judgement-report-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.judgement-report-field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.judgement-report-field input,
+.judgement-report-field select,
+.judgement-report-field textarea {
+  padding: 0.5rem;
+}
+
+.judgement-report-list {
+  margin: 0.75rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.judgement-report-video-card {
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.4rem;
+}
+
+.judgement-report-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.judgement-report-actions button {
+  padding: 0.65rem 1rem;
+  border: 0;
+  border-radius: 0.4rem;
+  color: #ffffff;
+  background: #1d4ed8;
+  cursor: pointer;
+}
+
+.judgement-report-actions button[type='button'] {
+  color: #1e3a8a;
+  background: #dbeafe;
+}
+
+.judgement-report-debug summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.judgement-report-debug pre {
+  overflow: auto;
+  padding: 0.75rem;
+  background: #0f172a;
+  color: #e2e8f0;
+}
